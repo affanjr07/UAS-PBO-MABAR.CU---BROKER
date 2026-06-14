@@ -3,70 +3,86 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
 
-<VBox spacing="10" prefWidth="240" styleClass="sidebar"
+<VBox spacing="0" prefWidth="250" styleClass="sidebar"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.mabarcu.controllers.SidebarController">
 
     <padding>
-        <Insets top="30" right="16" bottom="30" left="16"/>
+        <Insets top="28" right="14" bottom="24" left="14"/>
     </padding>
 
-    <VBox spacing="4" styleClass="sidebar-divider">
-        <HBox alignment="CENTER_LEFT" spacing="8">
-            <StackPane style="-fx-background-color: #52b788; -fx-background-radius: 4;"
-                       prefWidth="10"
-                       prefHeight="10"/>
-            <Label text="MABAR.CU" styleClass="logo"/>
+    <!-- Brand Header -->
+    <VBox spacing="2" style="-fx-padding: 0 6 0 6;">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <StackPane prefWidth="32" prefHeight="32"
+                       style="-fx-background-color: linear-gradient(to bottom right, #52b788, #2d6a4f);
+                              -fx-background-radius: 8;">
+                <Label text="M" style="-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: 900;"/>
+            </StackPane>
+            <VBox spacing="0">
+                <Label text="MABAR.CU" styleClass="logo"/>
+                <Label text="Gaming Broker"
+                       style="-fx-text-fill: #3a7d5e; -fx-font-size: 10px; -fx-font-weight: 600;"/>
+            </VBox>
         </HBox>
-
-        <Label text="Gaming Broker Platform"
-               styleClass="muted"
-               style="-fx-font-size: 11px;"/>
-
-        <Region prefHeight="15"/>
     </VBox>
 
-    <VBox spacing="6" VBox.vgrow="ALWAYS">
-        <Button text="Dashboard"
+    <Region prefHeight="20"/>
+
+    <!-- Section Label -->
+    <Label text="MENU"
+           style="-fx-text-fill: rgba(82, 183, 136, 0.4);
+                  -fx-font-size: 9px;
+                  -fx-font-weight: 800;
+                  -fx-padding: 0 0 8 8;"/>
+
+    <!-- Navigation -->
+    <VBox spacing="4" VBox.vgrow="ALWAYS">
+        <Button text="⌂  Dashboard"
                 onAction="#goDashboard"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="Matchmaking"
+        <Button text="⚔  Matchmaking"
                 onAction="#goMatchmaking"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="Profile"
+        <Button text="☺  Profile"
                 onAction="#goProfile"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="Chat"
+        <Button text="✉  Chat"
                 onAction="#goChat"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="Party Room"
+        <Button text="⚑  Party Room"
                 onAction="#goParty"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="Friendlist"
+        <Button text="♥  Friendlist"
                 onAction="#goFriends"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
     </VBox>
 
-    <Button text="Logout"
+    <!-- Separator -->
+    <Separator style="-fx-padding: 8 0;"/>
+
+    <!-- Logout -->
+    <Button text="↪  Logout"
             onAction="#logout"
             styleClass="danger-btn"
             maxWidth="Infinity"/>

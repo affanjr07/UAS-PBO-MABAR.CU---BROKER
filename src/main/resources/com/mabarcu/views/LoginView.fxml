@@ -5,55 +5,110 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.LoginController" styleClass="root-bg" prefWidth="1000" prefHeight="650">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mabarcu.controllers.LoginController"
+            styleClass="root-bg"
+            prefWidth="1000"
+            prefHeight="650">
   <center>
     <StackPane BorderPane.alignment="CENTER">
 
+      <!-- Ambient Background Circles -->
       <StackPane mouseTransparent="true" maxWidth="Infinity" maxHeight="Infinity">
-        <Circle radius="280" fill="#14241c" opacity="0.6" StackPane.alignment="TOP_LEFT" translateX="-80" translateY="-80"/>
-        <Circle radius="220" fill="#1b3a2b" opacity="0.4" StackPane.alignment="BOTTOM_RIGHT" translateX="80" translateY="80"/>
+        <Circle radius="320" fill="#0c1a13" opacity="0.7"
+                StackPane.alignment="TOP_LEFT"
+                translateX="-100" translateY="-100"/>
+        <Circle radius="250" fill="#112219" opacity="0.5"
+                StackPane.alignment="BOTTOM_RIGHT"
+                translateX="100" translateY="100"/>
+        <Circle radius="140" fill="#1b4332" opacity="0.2"
+                StackPane.alignment="CENTER"
+                translateX="250" translateY="-150"/>
       </StackPane>
 
       <padding>
-        <Insets top="40" right="40" bottom="40" left="40" />
+        <Insets top="40" right="40" bottom="40" left="40"/>
       </padding>
 
-      <VBox alignment="CENTER" spacing="24" styleClass="login-card" maxWidth="400" maxHeight="520">
+      <!-- Login Card -->
+      <VBox alignment="CENTER" spacing="28" styleClass="login-card"
+            maxWidth="420" maxHeight="560">
         <padding>
-          <Insets top="35" right="35" bottom="35" left="35" />
+          <Insets top="40" right="40" bottom="40" left="40"/>
         </padding>
 
-        <VBox alignment="CENTER" spacing="6">
-          <Label text="MABAR.CU" styleClass="brand-title" />
-          <Label text="Find teammates • Party room • Chat • Friendlist" styleClass="muted" alignment="CENTER" textAlignment="CENTER" wrapText="true" />
+        <!-- Branding -->
+        <VBox alignment="CENTER" spacing="4">
+          <HBox alignment="CENTER" spacing="10">
+            <StackPane prefWidth="38" prefHeight="38"
+                       style="-fx-background-color: linear-gradient(to bottom right, #52b788, #2d6a4f);
+                              -fx-background-radius: 10;">
+              <Label text="M" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: 900;"/>
+            </StackPane>
+            <Label text="MABAR.CU" styleClass="brand-title"/>
+          </HBox>
+          <Label text="Find teammates · Party room · Chat · Friendlist"
+                 styleClass="muted"
+                 alignment="CENTER"
+                 textAlignment="CENTER"
+                 wrapText="true"
+                 style="-fx-font-size: 12px;"/>
         </VBox>
 
-        <Region prefHeight="5" />
+        <Region prefHeight="2"/>
 
-        <VBox spacing="14" maxWidth="Infinity">
+        <!-- Form Fields -->
+        <VBox spacing="16" maxWidth="Infinity">
           <VBox spacing="6">
-            <Label text="Username or Email" styleClass="input-label"/>
-            <TextField fx:id="usernameField" promptText="Enter your username..." styleClass="modern-input" prefHeight="42" />
+            <Label text="USERNAME OR EMAIL" styleClass="input-label"/>
+            <TextField fx:id="usernameField"
+                       promptText="Enter your username..."
+                       styleClass="modern-input"
+                       prefHeight="44"/>
           </VBox>
 
           <VBox spacing="6">
-            <Label text="Password" styleClass="input-label"/>
-            <PasswordField fx:id="passwordField" promptText="Enter your password..." styleClass="modern-input" prefHeight="42" />
+            <Label text="PASSWORD" styleClass="input-label"/>
+            <PasswordField fx:id="passwordField"
+                           promptText="Enter your password..."
+                           styleClass="modern-input"
+                           prefHeight="44"/>
           </VBox>
         </VBox>
 
-        <Region prefHeight="5" />
+        <Region prefHeight="2"/>
 
+        <!-- Action Buttons -->
         <VBox spacing="14" maxWidth="Infinity" alignment="CENTER">
-          <Button text="Sign In" onAction="#login" styleClass="primary-green-btn" maxWidth="Infinity" prefHeight="42" />
+          <Button text="Sign In"
+                  onAction="#login"
+                  styleClass="primary-green-btn"
+                  maxWidth="Infinity"
+                  prefHeight="44"/>
 
           <HBox alignment="CENTER" spacing="12" maxWidth="Infinity">
-            <Button text="Create Account" onAction="#register" styleClass="secondary-flat-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="38" />
-            <Button text="Forgot Password?" onAction="#forgotPassword" styleClass="secondary-flat-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="38" />
+            <Button text="Create Account"
+                    onAction="#register"
+                    styleClass="secondary-flat-btn"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+            <Button text="Forgot Password?"
+                    onAction="#forgotPassword"
+                    styleClass="secondary-flat-btn"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
           </HBox>
         </VBox>
 
-        <Label fx:id="messageLabel" styleClass="message-label" wrapText="true" alignment="CENTER" textAlignment="CENTER" maxWidth="Infinity" />
+        <!-- Feedback Label -->
+        <Label fx:id="messageLabel"
+               styleClass="message-label"
+               wrapText="true"
+               alignment="CENTER"
+               textAlignment="CENTER"
+               maxWidth="Infinity"/>
       </VBox>
     </StackPane>
   </center>

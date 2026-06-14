@@ -18,86 +18,111 @@
 
     <center>
         <StackPane>
-            <Circle radius="300"
-                    fill="#14241c"
-                    opacity="0.2"
+            <!-- Ambient decorations -->
+            <Circle radius="350"
+                    fill="#0f1f16"
+                    opacity="0.3"
                     StackPane.alignment="BOTTOM_RIGHT"
-                    translateX="100"
-                    translateY="100"
+                    translateX="120"
+                    translateY="120"
+                    mouseTransparent="true"/>
+            <Circle radius="180"
+                    fill="#112219"
+                    opacity="0.2"
+                    StackPane.alignment="TOP_LEFT"
+                    translateX="-60"
+                    translateY="-60"
                     mouseTransparent="true"/>
 
             <VBox spacing="24" styleClass="page">
                 <padding>
-                    <Insets top="30" right="30" bottom="30" left="30"/>
+                    <Insets top="32" right="36" bottom="32" left="36"/>
                 </padding>
 
-                <VBox spacing="4">
-                    <Label fx:id="welcomeLabel"
-                           text="Halo, Player"
-                           styleClass="page-title"/>
+                <!-- Header with greeting and refresh -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label fx:id="welcomeLabel"
+                               text="Halo, Player"
+                               styleClass="page-title"/>
 
-                    <Label text="Pantau player online, notifikasi, dan aktivitas akun kamu secara real-time."
-                           styleClass="muted"/>
-                </VBox>
+                        <Label text="Pantau player online, notifikasi, dan aktivitas akun kamu secara real-time."
+                               styleClass="muted"/>
+                    </VBox>
 
+                    <Button text="⟳  Refresh"
+                            onAction="#refresh"
+                            prefHeight="40"
+                            prefWidth="140"
+                            styleClass="secondary-flat-btn"/>
+                </HBox>
+
+                <!-- Main Content Grid -->
                 <HBox spacing="20" VBox.vgrow="ALWAYS">
 
+                    <!-- Online Players Panel -->
                     <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
-                        <VBox spacing="2">
-                            <Label text="Online Players" styleClass="stat-label-alt"/>
-                            <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="onlineCountLabel" text="0" styleClass="stat-value"/>
-                                <Label text="active" styleClass="muted" style="-fx-font-size: 11px;"/>
-                            </HBox>
-                        </VBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="5" fill="#52b788"/>
+                            <VBox spacing="1">
+                                <Label text="Online Players" styleClass="stat-label-alt"/>
+                                <HBox alignment="BASELINE_LEFT" spacing="6">
+                                    <Label fx:id="onlineCountLabel" text="0" styleClass="stat-value"/>
+                                    <Label text="active" styleClass="muted" style="-fx-font-size: 11px;"/>
+                                </HBox>
+                            </VBox>
+                        </HBox>
 
                         <ListView fx:id="onlineList"
                                   VBox.vgrow="ALWAYS"
                                   styleClass="list-view"/>
                     </VBox>
 
+                    <!-- Offline Players Panel -->
                     <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
-                        <VBox spacing="2">
-                            <Label text="Offline Players" styleClass="stat-label"/>
-                            <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="offlineCountLabel"
-                                       text="0"
-                                       styleClass="stat-value"
-                                       style="-fx-text-fill: #52796f;"/>
-                                <Label text="inactive" styleClass="muted" style="-fx-font-size: 11px;"/>
-                            </HBox>
-                        </VBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Circle radius="5" fill="#3a5a48"/>
+                            <VBox spacing="1">
+                                <Label text="Offline Players" styleClass="stat-label"/>
+                                <HBox alignment="BASELINE_LEFT" spacing="6">
+                                    <Label fx:id="offlineCountLabel"
+                                           text="0"
+                                           styleClass="stat-value"
+                                           style="-fx-text-fill: #4a8068;"/>
+                                    <Label text="inactive" styleClass="muted" style="-fx-font-size: 11px;"/>
+                                </HBox>
+                            </VBox>
+                        </HBox>
 
                         <ListView fx:id="offlineList"
                                   VBox.vgrow="ALWAYS"
                                   styleClass="list-view"/>
                     </VBox>
 
+                    <!-- Right Column: Notifications + Activity -->
                     <VBox spacing="16" HBox.hgrow="ALWAYS">
 
                         <VBox spacing="10" styleClass="panel" VBox.vgrow="ALWAYS">
-                            <Label text="Notifications" styleClass="section-title"/>
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Label text="🔔" style="-fx-font-size: 14px;"/>
+                                <Label text="Notifications" styleClass="section-title"/>
+                            </HBox>
                             <ListView fx:id="notificationList"
                                       VBox.vgrow="ALWAYS"
                                       styleClass="list-view"/>
                         </VBox>
 
                         <VBox spacing="10" styleClass="panel" VBox.vgrow="ALWAYS">
-                            <Label text="Activities Logs" styleClass="section-title"/>
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Label text="📋" style="-fx-font-size: 14px;"/>
+                                <Label text="Activity Logs" styleClass="section-title"/>
+                            </HBox>
                             <ListView fx:id="activityList"
                                       VBox.vgrow="ALWAYS"
                                       styleClass="list-view"/>
                         </VBox>
                     </VBox>
 
-                </HBox>
-
-                <HBox alignment="CENTER_RIGHT" styleClass="action-footer">
-                    <Button text="Refresh Dashboard"
-                            onAction="#refresh"
-                            prefHeight="38"
-                            prefWidth="180"
-                            styleClass="primary-green-btn"/>
                 </HBox>
             </VBox>
         </StackPane>
