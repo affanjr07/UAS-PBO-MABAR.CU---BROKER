@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.ProfileController" styleClass="root-bg" prefWidth="1000" prefHeight="650">
+    <!-- SIDEBAR KIRI (Konsisten dengan Dashboard) -->
+    <left>
+        <VBox spacing="14" prefWidth="240" styleClass="sidebar" BorderPane.alignment="CENTER">
+            <Label text="MABAR.CU" styleClass="logo" />
+            <Separator styleClass="sidebar-divider"/>
+
+            <VBox spacing="8" VBox.vgrow="ALWAYS">
+                <Button text="Dashboard" onAction="#goDashboard" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+                <Button text="Matchmaking" onAction="#goMatchmaking" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+                <Button text="Profile" onAction="#goProfile" styleClass="nav-btn-active" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+                <Button text="Chat" onAction="#goChat" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+                <Button text="Party Room" onAction="#goParty" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+                <Button text="Friendlist" onAction="#goFriends" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+            </VBox>
+
+            <Button text="Logout" onAction="#logout" styleClass="danger-btn" maxWidth="Infinity" />
+        </VBox>
+    </left>
+
+    <!-- KONTEN UTAMA -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="main-scrollpane" vbarPolicy="AS_NEEDED">
+            <VBox spacing="24" styleClass="page">
+
+                <!-- HERO PROFILE BANNER -->
+                <VBox spacing="12" styleClass="hero">
+                    <VBox spacing="4">
+                        <Label fx:id="profileHeader" text="Display Name • @username" styleClass="hero-title"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="STATUS:" styleClass="hero-status-tag" />
+                            <Label text="Online" styleClass="success-text" fx:id="lblStatus" />
+                        </HBox>
+                    </VBox>
+                    <Separator styleClass="hero-divider" />
+                    <Label fx:id="profileStats" text="Followers 0  |  Following 0" styleClass="hero-stats"/>
+                </VBox>
+
+                <!-- MAIN CONTENT AREA -->
+                <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+                    <!-- FORM EDIT PROFIL -->
+                    <VBox spacing="16" styleClass="panel" HBox.hgrow="ALWAYS">
+                        <Label text="Edit Gamer Profile" styleClass="section-title"/>
+
+                        <GridPane hgap="16" vgap="16">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                            </columnConstraints>
+
+                            <children>
+                                <!-- Baris 1 -->
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                                    <Label text="Display Name" styleClass="form-label"/>
+                                    <TextField fx:id="displayNameField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                    <Label text="Username" styleClass="form-label"/>
+                                    <TextField fx:id="usernameField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+
+                                <!-- Baris 2 -->
+                                <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                                    <Label text="Favorite Game" styleClass="form-label"/>
+                                    <TextField fx:id="gameField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                    <Label text="Rank" styleClass="form-label"/>
+                                    <TextField fx:id="rankField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+
+                                <!-- Baris 3 -->
+                                <VBox spacing="6" GridPane.rowIndex="2" GridPane.columnIndex="0">
+                                    <Label text="Preferred Role" styleClass="form-label"/>
+                                    <TextField fx:id="roleField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                                    <Label text="Region" styleClass="form-label"/>
+                                    <TextField fx:id="regionField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+
+                                <!-- Baris 4 (Full Width untuk Bio) -->
+                                <VBox spacing="6" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                                    <Label text="Gender" styleClass="form-label"/>
+                                    <TextField fx:id="genderField" styleClass="input" prefHeight="38"/>
+                                </VBox>
+
+                                <!-- Baris 5 (Full Width untuk Bio) -->
+                                <VBox spacing="6" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                                    <Label text="Short Bio" styleClass="form-label"/>
+                                    <TextArea fx:id="bioArea" prefRowCount="3" styleClass="input" wrapText="true"/>
+                                </VBox>
+                            </children>
+                        </GridPane>
+
+                        <Separator styleClass="hero-divider" />
+
+                        <!-- Action Footer Form -->
+                        <HBox spacing="14" alignment="CENTER_LEFT">
+                            <Button text="Save Changes" onAction="#saveProfile" styleClass="primary-btn" prefHeight="38" prefWidth="140"/>
+                            <Label fx:id="saveMsg" styleClass="message-label" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- KANAN: AKTIVITAS TERBARU -->
+                    <VBox spacing="12" styleClass="panel" prefWidth="340" minWidth="300">
+                        <Label text="Recent Match &amp; Party History" styleClass="section-title"/>
+                        <ListView fx:id="activityList" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

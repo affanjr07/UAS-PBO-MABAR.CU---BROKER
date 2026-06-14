@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.MatchmakingController" styleClass="root-bg" prefWidth="1200" prefHeight="760">
+
+ <left>
+  <VBox spacing="10" prefWidth="240" styleClass="sidebar" BorderPane.alignment="CENTER">
+   <padding>
+    <Insets top="30" right="16" bottom="30" left="16"/>
+   </padding>
+
+   <VBox spacing="4" styleClass="sidebar-divider">
+    <HBox alignment="CENTER_LEFT" spacing="8">
+     <StackPane style="-fx-background-color: #52b788; -fx-background-radius: 4;" prefWidth="10" prefHeight="10"/>
+     <Label text="MABAR.CU" styleClass="logo" />
+    </HBox>
+    <Label text="Gaming Dashboard" styleClass="muted" style="-fx-font-size: 11px;" />
+    <Region prefHeight="15"/>
+   </VBox>
+
+   <VBox spacing="6" VBox.vgrow="ALWAYS">
+    <Button text="Dashboard" onAction="#goDashboard" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Matchmaking" onAction="#goMatchmaking" styleClass="nav-btn-active" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Profile" onAction="#goProfile" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Chat" onAction="#goChat" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Party Room" onAction="#goParty" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Friendlist" onAction="#goFriends" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+   </VBox>
+
+   <Button text="Logout" onAction="#logout" styleClass="danger-btn" maxWidth="Infinity" />
+  </VBox>
+ </left>
+
+ <center>
+  <StackPane>
+   <Circle radius="280" fill="#14241c" opacity="0.15" StackPane.alignment="BOTTOM_RIGHT" translateX="100" translateY="100" mouseTransparent="true"/>
+
+   <VBox spacing="24" styleClass="page">
+    <padding>
+     <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="4">
+     <Label text="Matchmaking Hub" styleClass="page-title"/>
+     <Label text="Filter out your tactical requirements and recruit raw talents instantly." styleClass="muted" />
+    </VBox>
+
+    <HBox spacing="14" alignment="CENTER_LEFT" styleClass="panel" prefHeight="76" minHeight="76">
+     <padding>
+      <Insets top="12" right="20" bottom="12" left="20" />
+     </padding>
+
+     <ComboBox fx:id="gameFilter" promptText="Game" styleClass="combo-box" prefWidth="170" prefHeight="40" />
+     <ComboBox fx:id="rankFilter" promptText="Rank" styleClass="combo-box" prefWidth="150" prefHeight="40" />
+     <ComboBox fx:id="roleFilter" promptText="Role" styleClass="combo-box" prefWidth="150" prefHeight="40" />
+     <ComboBox fx:id="regionFilter" promptText="Region" styleClass="combo-box" prefWidth="150" prefHeight="40" />
+
+     <Region HBox.hgrow="ALWAYS" />
+
+     <Button text="🔍 Search" onAction="#search" styleClass="primary-green-btn" prefWidth="130" prefHeight="40"/>
+    </HBox>
+
+    <Label fx:id="infoLabel" styleClass="stat-bar" maxWidth="Infinity" prefHeight="40">
+     <padding>
+      <Insets left="12" right="12"/>
+     </padding>
+    </Label>
+
+    <ListView fx:id="resultList" VBox.vgrow="ALWAYS" styleClass="list-view" />
+
+    <HBox spacing="16" alignment="CENTER_LEFT" styleClass="action-footer">
+     <Button text="⚔️ Invite Selected Team" onAction="#inviteSelected" styleClass="primary-green-btn" prefHeight="44" prefWidth="220"/>
+     <Button text="➕ Follow Selected User" onAction="#followSelected" styleClass="secondary-flat-btn" prefHeight="44" prefWidth="220"/>
+    </HBox>
+   </VBox>
+  </StackPane>
+ </center>
+</BorderPane>

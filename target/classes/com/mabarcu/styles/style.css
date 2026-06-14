@@ -1,0 +1,394 @@
+/* ==========================================================================
+   1. ATURAN DASAR & SCROLLPANE
+   ========================================================================== */
+.root-bg {
+    -fx-background-color: #0d1611; /* Gelap berbasis deep forest green, bukan hitam murni */
+    -fx-font-family: "Segoe UI", "-apple-system", Arial, sans-serif;
+}
+.main-container {
+    -fx-background-color: #0d1611;
+}
+.main-scrollpane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.main-scrollpane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ==========================================================================
+   2. SIDEBAR NAVIGATION (DASHBOARD)
+   ========================================================================== */
+.sidebar {
+    -fx-background-color: #101c15;
+    -fx-padding: 24;
+    -fx-border-color: #1b2e24;
+    -fx-border-width: 0 1 0 0;
+}
+.logo {
+    -fx-text-fill: #52b788; /* Hijau sage premium, bebas pendaran neon */
+    -fx-font-size: 26px;
+    -fx-font-weight: 900;
+    -fx-effect: none; /* Menghapus efek neon glow */
+}
+.sidebar-divider {
+    -fx-border-color: #1b2e24;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 0 0 10 0;
+}
+
+/* ==========================================================================
+   3. STRUKTUR HALAMAN & TYPOGRAPHY
+   ========================================================================== */
+.page {
+    -fx-padding: 30;
+    -fx-background-color: #0d1611;
+}
+.page-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+}
+.brand-title {
+    -fx-text-fill: #52b788;
+    -fx-font-size: 42px;
+    -fx-font-weight: 900;
+    -fx-effect: none;
+}
+.section-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 0 0 4 0;
+}
+.muted {
+    -fx-text-fill: #52796f;
+    -fx-font-size: 14px;
+}
+.label {
+    -fx-text-fill: #b7e4c7;
+}
+.input-label, .form-label {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+    -fx-text-fill: #74c69d;
+}
+
+/* ==========================================================================
+   4. KARTU CONTAINERS & PANEL
+   ========================================================================== */
+.login-card {
+    -fx-background-color: #14241c;
+    -fx-padding: 34 24;
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(82, 183, 136, 0.2);
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 30, 0, 0, 15);
+}
+.panel {
+    -fx-background-color: #14241c;
+    -fx-padding: 20;
+    -fx-background-radius: 14;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+}
+
+/* ==========================================================================
+   5. KARTU STATISTIK (DASHBOARD)
+   ========================================================================== */
+.stat-card {
+    -fx-background-color: #14241c;
+    -fx-padding: 16;
+    -fx-background-radius: 12;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+}
+.stat-label, .stat-label-alt {
+    -fx-text-fill: #74c69d;
+    -fx-font-size: 11px;
+    -fx-font-weight: 800;
+}
+.stat-value, .stat-value-alt {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+    -fx-padding: 4 0 0 0;
+    -fx-effect: none;
+}
+
+/* ==========================================================================
+   6. FIX INTERAKSI TOMBOL (BUTTONS) - ANTI OVERRIDE MODENA
+   ========================================================================== */
+.nav-btn, .nav-btn-active, .primary-btn, .primary-green-btn, .ghost-btn, .secondary-flat-btn, .danger-btn {
+    -fx-cursor: hand;
+    -fx-font-weight: 700;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+}
+.nav-btn, .nav-btn-active, .danger-btn {
+    -fx-padding: 12 16;
+}
+
+/* Navigasi Sidebar */
+.nav-btn {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #95d5b2;
+}
+.nav-btn:hover {
+    -fx-background-color: #1b3a2b !important;
+    -fx-text-fill: #ffffff;
+}
+.nav-btn-active {
+    -fx-background-color: #40916c !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-effect: none;
+}
+
+/* Tombol Utama (Sign In / Submit) - Hijau Emerald Matte */
+.primary-btn, .primary-green-btn {
+    -fx-background-color: #2d6a4f !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-font-weight: 800;
+    -fx-effect: none;
+}
+.primary-btn:hover, .primary-green-btn:hover {
+    -fx-background-color: #40916c !important;
+}
+.primary-btn:pressed, .primary-green-btn:pressed {
+    -fx-background-color: #1b3a2b !important;
+}
+
+/* Tombol Sekunder / Ghost (Register / Forgot Password) */
+.ghost-btn, .secondary-flat-btn {
+    -fx-background-color: transparent !important;
+    -fx-border-color: rgba(82, 183, 136, 0.4) !important;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #74c69d !important;
+}
+.ghost-btn:hover, .secondary-flat-btn:hover {
+    -fx-background-color: rgba(82, 183, 136, 0.1) !important;
+    -fx-text-fill: #95d5b2 !important;
+    -fx-border-color: #52b788 !important;
+}
+.ghost-btn:pressed, .secondary-flat-btn:pressed {
+    -fx-background-color: rgba(82, 183, 136, 0.2) !important;
+}
+
+/* Tombol Bahaya / Keluar */
+.danger-btn {
+    -fx-background-color: #2d1618 !important;
+    -fx-text-fill: #ff8b94 !important;
+    -fx-border-color: #5c2529 !important;
+    -fx-border-radius: 8;
+}
+.danger-btn:hover {
+    -fx-background-color: #411e21 !important;
+    -fx-border-color: #ff8b94 !important;
+}
+
+/* ==========================================================================
+   7. INPUT FIELDS (TEXT, PASSWORD, AREA)
+   ========================================================================== */
+.input, .text-field, .password-field, .modern-input {
+    -fx-background-color: #1b2e24 !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-prompt-text-fill: #52796f !important;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d6a4f !important;
+    -fx-border-radius: 8;
+    -fx-padding: 0 14;
+}
+.input:focused, .text-field:focused, .password-field:focused, .modern-input:focused {
+    -fx-border-color: #52b788 !important;
+    -fx-background-color: #223a2e !important;
+    -fx-effect: none;
+}
+.text-area {
+    -fx-padding: 6 0;
+}
+.text-area .content {
+    -fx-background-color: #1b2e24 !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* ==========================================================================
+   8. COMPONENTS LIST VIEW (FRIENDLIST / SEARCH RESULTS / ONLINE USERS)
+   ========================================================================== */
+.list-view {
+    -fx-background-color: #111f17;
+    -fx-control-inner-background: #111f17;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+    -fx-padding: 6;
+}
+.list-view:focused {
+    -fx-border-color: #52b788;
+}
+.list-cell {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #b7e4c7 !important;
+    -fx-padding: 12 16;
+    -fx-background-radius: 8;
+}
+.list-cell:filled:hover {
+    -fx-background-color: #1b3a2b !important;
+    -fx-text-fill: #ffffff !important;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #40916c !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-font-weight: 600;
+    -fx-border-color: transparent transparent transparent #ffffff;
+    -fx-border-width: 0 0 0 4;
+}
+.list-view .scroll-bar:vertical, .list-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #2d6a4f;
+    -fx-background-radius: 4;
+}
+
+/* ==========================================================================
+   9. FEEDBACK MESSAGES & STATUS TEXT
+   ========================================================================== */
+.message-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+.success-text {
+    -fx-text-fill: #52b788;
+}
+.error-text {
+    -fx-text-fill: #ff8b94; /* Merah pastel soft agar senada */
+}
+
+/* ==========================================================================
+   10. TAMBAHAN ELEMEN PROFIL & HERO BANNER
+   ========================================================================== */
+.hero {
+    -fx-background-color: linear-gradient(to right, #112219, #1b4332);
+    -fx-padding: 24 28;
+    -fx-background-radius: 14;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+    -fx-effect: none;
+}
+.hero-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+}
+.hero-status-tag {
+    -fx-text-fill: #74c69d;
+    -fx-font-size: 11px;
+    -fx-font-weight: 900;
+}
+.hero-divider {
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 4 0;
+}
+.hero-stats {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+/* ==========================================================================
+   11. PENATAAN RUANG CHAT & AKSESORI MEDIA
+   ========================================================================== */
+.chat-list-view {
+    -fx-background-color: #111f17;
+    -fx-control-inner-background: #111f17;
+    -fx-border-color: #2d6a4f;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+}
+.chat-input-container {
+    -fx-background-color: #101c15;
+    -fx-padding: 14;
+    -fx-background-radius: 12;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+}
+.chat-status-label {
+    -fx-text-fill: #52796f;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 2 4 0 0;
+}
+.chat-list-view .list-cell {
+    -fx-padding: 12 16;
+    -fx-border-color: transparent transparent #1b2e24 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.chat-list-view .list-cell:filled:hover {
+    -fx-background-color: #1b3a2b !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+/* ==========================================================================
+   12. COMBOBOX STYLING
+   ========================================================================== */
+.combo-box {
+    -fx-background-color: #1b2e24;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d6a4f;
+    -fx-border-radius: 8;
+    -fx-padding: 0 4;
+}
+.combo-box:focused {
+    -fx-border-color: #52b788;
+}
+.combo-box .cell {
+    -fx-text-fill: #ffffff;
+    -fx-padding: 4 8;
+}
+.combo-box .cell:hover {
+    -fx-text-fill: #52b788;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #14241c;
+    -fx-background-radius: 8;
+    -fx-border-color: #2d6a4f;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 5);
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #ffffff !important;
+    -fx-padding: 8 12;
+}
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #40916c !important;
+    -fx-text-fill: #ffffff !important;
+}
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #2d6a4f !important;
+    -fx-text-fill: #ffffff !important;
+}
+.action-footer {
+    -fx-padding: 4 0 0 0;
+}
+
+/* ==========================================================================
+   13. CUSTOM TERMINAL / BOTTOM STATUS BAR
+   ========================================================================== */
+.stat-bar {
+    -fx-background-color: #101c15;
+    -fx-text-fill: #52b788;
+    -fx-border-color: #2d6a4f;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 12px;
+}

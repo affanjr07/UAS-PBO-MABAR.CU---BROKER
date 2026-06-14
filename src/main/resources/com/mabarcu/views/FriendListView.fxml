@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  MABAR.CU - FriendListView Modernization
+  Clean grid layout for efficient management of friendships and blocks.
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.FriendListController" styleClass="root-bg" prefWidth="1000" prefHeight="650">
+ <!-- SIDEBAR KIRI -->
+ <left>
+  <VBox spacing="14" prefWidth="240" styleClass="sidebar" BorderPane.alignment="CENTER">
+   <Label text="MABAR.CU" styleClass="logo" />
+   <Separator styleClass="sidebar-divider"/>
+
+   <VBox spacing="8" VBox.vgrow="ALWAYS">
+    <Button text="Dashboard" onAction="#goDashboard" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Matchmaking" onAction="#goMatchmaking" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Profile" onAction="#goProfile" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Chat" onAction="#goChat" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Party Room" onAction="#goParty" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+    <Button text="Friendlist" onAction="#goFriends" styleClass="nav-btn-active" maxWidth="Infinity" alignment="BASELINE_LEFT" />
+   </VBox>
+
+   <Button text="Logout" onAction="#logout" styleClass="danger-btn" maxWidth="Infinity" />
+  </VBox>
+ </left>
+
+ <!-- KONTEN UTAMA -->
+ <center>
+  <VBox spacing="20" styleClass="page">
+   <!-- HEADER -->
+   <VBox spacing="4">
+    <Label text="Friendlist &amp; Follow System" styleClass="page-title"/>
+    <Label text="Manage network relations, incoming follow requests, and filters." styleClass="muted" />
+   </VBox>
+
+   <!-- SEARCH BAR BARIS ATAS -->
+   <HBox spacing="12" alignment="CENTER_LEFT" styleClass="panel" prefHeight="64" minHeight="64">
+    <padding>
+     <Insets top="8" right="16" bottom="8" left="16" />
+    </padding>
+    <TextField fx:id="searchField" promptText="Cari nama teman mabar..." HBox.hgrow="ALWAYS" styleClass="input" prefHeight="38" onAction="#search"/>
+    <Button text="🔍 Search" onAction="#search" styleClass="primary-btn" prefWidth="110" prefHeight="38"/>
+   </HBox>
+
+   <VBox spacing="10" styleClass="panel">
+    <Label text="Search Player Result" styleClass="section-title"/>
+    <ListView fx:id="playerResultList" prefHeight="120"/>
+    <Button text="➕ Follow Player" onAction="#followUser" styleClass="primary-btn"/>
+   </VBox>
+
+   <!-- KONTEN UTAMA TIGA PANEL FLUID -->
+   <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+    <!-- PANEL 1: DAFTAR TEMAN UTAMA -->
+    <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
+     <Label text="Friends Database" styleClass="section-title"/>
+     <ListView fx:id="friendList" VBox.vgrow="ALWAYS"/>
+     <HBox spacing="10">
+      <Button text="❌ Unfollow" onAction="#removeFriend" styleClass="ghost-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="36"/>
+      <Button text="🚫 Block User" onAction="#blockFriend" styleClass="danger-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="36"/>
+     </HBox>
+    </VBox>
+
+    <!-- PANEL 2: REQUEST FOLLBACK -->
+    <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
+     <Label text="Follow Requests" styleClass="section-title"/>
+     <ListView fx:id="requestList" VBox.vgrow="ALWAYS"/>
+     <Button text="🤝 Accept Mutual Follow" onAction="#accept" styleClass="primary-btn" maxWidth="Infinity" prefHeight="36"/>
+    </VBox>
+
+    <!-- PANEL 3: DAFTAR BLOKIR (LEBIH RAMPING) -->
+    <VBox spacing="12" styleClass="panel" prefWidth="240" minWidth="200">
+     <Label text="Blacklisted Users" styleClass="section-title"/>
+     <ListView fx:id="blockedList" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+   </HBox>
+
+   <!-- LOG NOTIFIKASI AKSI -->
+   <Label fx:id="actionLabel" styleClass="stat-bar" maxWidth="Infinity" prefHeight="36"/>
+  </VBox>
+ </center>
+</BorderPane>

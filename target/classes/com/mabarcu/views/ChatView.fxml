@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mabarcu.controllers.ChatController"
+            styleClass="root-bg"
+            prefWidth="1200"
+            prefHeight="760">
+
+ <left>
+  <VBox spacing="10" prefWidth="240" styleClass="sidebar" BorderPane.alignment="CENTER">
+   <padding>
+    <Insets top="30" right="16" bottom="30" left="16"/>
+   </padding>
+
+   <VBox spacing="4" styleClass="sidebar-divider">
+    <HBox alignment="CENTER_LEFT" spacing="8">
+     <StackPane style="-fx-background-color: #52b788; -fx-background-radius: 4;"
+                prefWidth="10"
+                prefHeight="10"/>
+     <Label text="MABAR.CU" styleClass="logo"/>
+    </HBox>
+
+    <Label text="Community Chat"
+           styleClass="muted"
+           style="-fx-font-size: 11px;"/>
+
+    <Region prefHeight="15"/>
+   </VBox>
+
+   <VBox spacing="6" VBox.vgrow="ALWAYS">
+    <Button text="Dashboard"
+            onAction="#goDashboard"
+            styleClass="nav-btn"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+
+    <Button text="Matchmaking"
+            onAction="#goMatchmaking"
+            styleClass="nav-btn"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+
+    <Button text="Profile"
+            onAction="#goProfile"
+            styleClass="nav-btn"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+
+    <Button text="Chat"
+            onAction="#goChat"
+            styleClass="nav-btn-active"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+
+    <Button text="Party Room"
+            onAction="#goParty"
+            styleClass="nav-btn"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+
+    <Button text="Friendlist"
+            onAction="#goFriends"
+            styleClass="nav-btn"
+            maxWidth="Infinity"
+            alignment="BASELINE_LEFT"/>
+   </VBox>
+
+   <Button text="Logout"
+           onAction="#logout"
+           styleClass="danger-btn"
+           maxWidth="Infinity"/>
+  </VBox>
+ </left>
+
+ <center>
+  <StackPane>
+   <Circle radius="250"
+           fill="#14241c"
+           opacity="0.15"
+           StackPane.alignment="BOTTOM_RIGHT"
+           translateX="80"
+           translateY="80"
+           mouseTransparent="true"/>
+
+   <VBox spacing="24" styleClass="page">
+    <padding>
+     <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <HBox spacing="12" alignment="CENTER_LEFT">
+     <VBox spacing="4">
+      <Label text="Realtime Chat Server"
+             styleClass="page-title"/>
+
+      <Label text="Pilih komunitas game, lalu chat dengan player di channel tersebut."
+             styleClass="muted"/>
+     </VBox>
+
+     <Region HBox.hgrow="ALWAYS"/>
+
+     <ComboBox fx:id="channelBox"
+               prefWidth="260"
+               promptText="Pilih komunitas game"/>
+    </HBox>
+
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+     <VBox spacing="14" styleClass="panel" prefWidth="330" minWidth="280">
+      <padding>
+       <Insets top="16" right="16" bottom="16" left="16"/>
+      </padding>
+
+      <VBox spacing="2">
+       <Label text="Active Contacts"
+              styleClass="stat-label-alt"/>
+
+       <Label text="Player yang berada di komunitas game terpilih"
+              styleClass="muted"
+              style="-fx-font-size: 11px;"/>
+      </VBox>
+
+      <ListView fx:id="contactList"
+                VBox.vgrow="ALWAYS"
+                styleClass="list-view"/>
+     </VBox>
+
+     <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
+      <padding>
+       <Insets top="16" right="16" bottom="16" left="16"/>
+      </padding>
+
+      <HBox alignment="CENTER_LEFT" spacing="8">
+       <Circle radius="4" fill="#52b788"/>
+       <Label text="Community Game Channel"
+              styleClass="section-title"/>
+      </HBox>
+
+      <ListView fx:id="chatList"
+                VBox.vgrow="ALWAYS"
+                styleClass="chat-list-view"/>
+
+      <VBox spacing="8" styleClass="chat-input-container">
+       <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="messageField"
+                   promptText="Tulis pesan komunitas game..."
+                   HBox.hgrow="ALWAYS"
+                   styleClass="input"
+                   prefHeight="44"
+                   onAction="#sendMessage"/>
+
+        <Button text="😊 Emoji"
+                onAction="#sendEmoji"
+                styleClass="ghost-btn"
+                prefHeight="44"
+                style="-fx-padding: 0 14;"/>
+
+        <Button text="🖼️ Sticker"
+                onAction="#sendSticker"
+                styleClass="ghost-btn"
+                prefHeight="44"
+                style="-fx-padding: 0 14;"/>
+
+        <Button text="SEND"
+                onAction="#sendMessage"
+                styleClass="primary-green-btn"
+                prefHeight="44"
+                prefWidth="100"/>
+       </HBox>
+
+       <HBox alignment="CENTER_RIGHT" styleClass="action-footer">
+        <Label fx:id="statusLabel"
+               text="Pilih komunitas game untuk mulai chat"
+               styleClass="chat-status-label"/>
+       </HBox>
+      </VBox>
+     </VBox>
+    </HBox>
+   </VBox>
+  </StackPane>
+ </center>
+</BorderPane>
