@@ -77,7 +77,7 @@ Pastikan telah menginstal:
 1. Clone repository:
 
 ```bash
-git clone [https://github.com/username/MABARCU.git](https://github.com/affanjr07/UAS-PBO-MABAR.CU---BROKER.git)
+git clone https://github.com/affanjr07/UAS-PBO-MABAR.CU---BROKER.git
 ```
 
 2. Masuk ke folder project:
@@ -139,4 +139,4 @@ Selain itu juga menerapkan:
 ## Video Presentasi
 
 Link Video YouTube:
-(https://youtu.be/byNIfrGtSto)
+https://youtu.be/byNIfrGtSto
