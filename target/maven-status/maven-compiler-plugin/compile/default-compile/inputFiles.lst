@@ -13,6 +13,7 @@ C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\m
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\FriendRequestRepository.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\NotificationRepository.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\PartyRoomRepository.java
+C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\PrivateMessageRepository.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\RoomChatMessageRepository.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\repositories\UserRepository.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\backend\services\AppService.java
@@ -24,8 +25,11 @@ C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\m
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\LoginController.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\MatchmakingController.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\PartyRoomController.java
+C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\PrivateChatController.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\ProfileController.java
+C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\RegisterController.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\SidebarController.java
+C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\controllers\UserProfileController.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\MainApp.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\Account.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\Activity.java
@@ -37,6 +41,7 @@ C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\m
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\Matchable.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\Notification.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\PartyRoom.java
+C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\PrivateMessage.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\RoomChatMessage.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\models\User.java
 C:\Users\ACER\Documents\MABAR.CU - Copy\mabar-cu\UAS-PBO-MABAR.CU---BROKER\src\main\java\com\mabarcu\services\AppData.java

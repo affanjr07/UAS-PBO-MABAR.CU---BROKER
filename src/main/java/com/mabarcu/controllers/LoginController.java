@@ -3,9 +3,12 @@ package com.mabarcu.controllers;
 import com.mabarcu.MainApp;
 import com.mabarcu.services.AppData;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class LoginController {
+
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label messageLabel;
@@ -14,73 +17,86 @@ public class LoginController {
     public void initialize() {
         usernameField.clear();
         passwordField.clear();
+        showFeedback("", false);
     }
 
     @FXML
     public void login() {
-        String u = usernameField.getText().trim();
-        if (u.isEmpty()) {
+        String username = usernameField.getText() == null
+                ? ""
+                : usernameField.getText().trim();
+
+        String password = passwordField.getText() == null
+                ? ""
+                : passwordField.getText();
+
+        if (username.isEmpty()) {
             showFeedback("Username wajib diisi.", true);
             return;
         }
 
+        if (password.isEmpty()) {
+            showFeedback("Password wajib diisi.", true);
+            return;
+        }
+
         try {
-            AppData.login(u, passwordField.getText());
-<<<<<<< HEAD
-            Alert success = new Alert(Alert.AlertType.INFORMATION, "Login berhasil! Selamat datang, " + AppData.currentUser.getDisplayName());
-            success.showAndWait();
-            MainApp.setRoot("DashboardView");
-        } catch (Exception e) {
-            Alert error = new Alert(Alert.AlertType.ERROR, e.getMessage());
-            error.showAndWait();
-            showFeedback(e.getMessage(), true);
-=======
+            AppData.login(username, password);
             MainApp.setRoot("DashboardView");
         } catch (Exception e) {
             showFeedback(
-                    e.getMessage() != null ? e.getMessage() : "Login gagal. Periksa username/password.",
+                    e.getMessage() != null
+                            ? e.getMessage()
+                            : "Login gagal. Periksa username/password.",
                     true
             );
->>>>>>> 4e3ab06ba4d8394a50b9997b9ef92224d56dd79c
         }
     }
 
     @FXML
     public void register() {
-<<<<<<< HEAD
-        MainApp.setRoot("RegisterView");
-=======
-        String u = usernameField.getText().trim();
-        String p = passwordField.getText();
+        String username = usernameField.getText() == null
+                ? ""
+                : usernameField.getText().trim();
 
-        if (u.isEmpty() || p.isEmpty()) {
+        String password = passwordField.getText() == null
+                ? ""
+                : passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
             showFeedback("Username dan password wajib diisi.", true);
             return;
         }
 
         try {
-            AppData.register(u, p);
+            AppData.register(username, password);
             showFeedback("Akun berhasil dibuat. Silakan login.", false);
         } catch (Exception e) {
             showFeedback(
-                    e.getMessage() != null ? e.getMessage() : "Registrasi gagal.",
+                    e.getMessage() != null
+                            ? e.getMessage()
+                            : "Registrasi gagal.",
                     true
             );
         }
->>>>>>> 4e3ab06ba4d8394a50b9997b9ef92224d56dd79c
     }
 
     @FXML
     public void forgotPassword() {
-        showFeedback("Reset password demo aktif. Database lokal tetap aman.", false);
+        showFeedback("Fitur reset password belum tersedia.", false);
     }
 
-    /**
-     * Helper Method untuk mengatur warna pesan feedback secara dinamis
-     */
     private void showFeedback(String text, boolean isError) {
-        messageLabel.setText(text);
+        if (messageLabel == null) {
+            return;
+        }
+
+        messageLabel.setText(text == null ? "" : text);
         messageLabel.getStyleClass().removeAll("success-text", "error-text");
+
+        if (text == null || text.isBlank()) {
+            return;
+        }
 
         if (isError) {
             messageLabel.getStyleClass().add("error-text");

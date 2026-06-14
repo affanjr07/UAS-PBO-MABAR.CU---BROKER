@@ -1,7 +1,10 @@
 com\mabarcu\backend\repositories\RoomChatMessageRepository.class
 com\mabarcu\controllers\BaseNav.class
+com\mabarcu\controllers\UserProfileController.class
 com\mabarcu\backend\controllers\AuthController.class
 com\mabarcu\backend\repositories\ActivityRepository.class
+com\mabarcu\models\PrivateMessage.class
+com\mabarcu\controllers\PrivateChatController.class
 com\mabarcu\models\BlockedUser.class
 com\mabarcu\services\AppData.class
 com\mabarcu\models\RoomChatMessage.class
@@ -32,6 +35,7 @@ com\mabarcu\MainApp.class
 com\mabarcu\backend\repositories\FriendRequestRepository.class
 com\mabarcu\backend\services\AppService.class
 com\mabarcu\controllers\LoginController.class
+com\mabarcu\controllers\RegisterController.class
 com\mabarcu\backend\BackendApplication.class
 com\mabarcu\controllers\ProfileController.class
 com\mabarcu\backend\services\DataSeeder.class
@@ -40,4 +44,5 @@ com\mabarcu\backend\repositories\ChatMessageRepository.class
 com\mabarcu\backend\config\SpringContext.class
 com\mabarcu\controllers\MatchmakingController.class
 com\mabarcu\models\Account.class
+com\mabarcu\backend\repositories\PrivateMessageRepository.class
 com\mabarcu\models\BaseEntity.class
