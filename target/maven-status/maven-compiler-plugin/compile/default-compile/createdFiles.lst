@@ -35,6 +35,7 @@ com\mabarcu\controllers\LoginController.class
 com\mabarcu\backend\BackendApplication.class
 com\mabarcu\controllers\ProfileController.class
 com\mabarcu\backend\services\DataSeeder.class
+com\mabarcu\controllers\SidebarController.class
 com\mabarcu\backend\repositories\ChatMessageRepository.class
 com\mabarcu\backend\config\SpringContext.class
 com\mabarcu\controllers\MatchmakingController.class
