@@ -3,6 +3,7 @@ import com.mabarcu.models.*; import javafx.collections.*;
 
 public class AppData {
     public static User currentUser;
+    public static User selectedUser;
     public static ObservableList<User> players = FXCollections.observableArrayList();
     public static ObservableList<String> friends = FXCollections.observableArrayList();
     public static ObservableList<String> requests = FXCollections.observableArrayList();

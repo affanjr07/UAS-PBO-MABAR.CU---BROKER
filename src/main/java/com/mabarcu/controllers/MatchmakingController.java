@@ -116,4 +116,22 @@ public class MatchmakingController extends BaseNav {
         AppData.reloadAll();
         infoLabel.setText("Berhasil follow player.");
     }
+
+    @FXML
+    public void viewProfile() {
+        String s = resultList.getSelectionModel().getSelectedItem();
+
+        if (s == null) {
+            infoLabel.setText("Pilih player terlebih dahulu.");
+            return;
+        }
+
+        int targetId = Integer.parseInt(s.split(" \\| ")[0]);
+        User target = Database.findUserById(targetId);
+        
+        if (target != null) {
+            AppData.selectedUser = target;
+            goUserProfile();
+        }
+    }
 }

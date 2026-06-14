@@ -1,74 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  MABAR.CU - FriendListView Modernization
-  Clean grid layout for efficient management of friendships and blocks.
--->
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.FriendListController" styleClass="root-bg" prefWidth="1000" prefHeight="650">
- <!-- SIDEBAR KIRI -->
- <left>
-  <fx:include source="Sidebar.fxml"/>
- </left>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mabarcu.controllers.FriendListController"
+            styleClass="root-bg"
+            prefWidth="1200"
+            prefHeight="760">
 
- <!-- KONTEN UTAMA -->
- <center>
-  <VBox spacing="20" styleClass="page">
-   <!-- HEADER -->
-   <VBox spacing="4">
-    <Label text="Friendlist &amp; Follow System" styleClass="page-title"/>
-    <Label text="Manage network relations, incoming follow requests, and filters." styleClass="muted" />
-   </VBox>
+    <!-- SIDEBAR -->
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
 
-   <!-- SEARCH BAR BARIS ATAS -->
-   <HBox spacing="12" alignment="CENTER_LEFT" styleClass="panel" prefHeight="64" minHeight="64">
-    <padding>
-     <Insets top="8" right="16" bottom="8" left="16" />
-    </padding>
-    <TextField fx:id="searchField" promptText="Cari nama teman mabar..." HBox.hgrow="ALWAYS" styleClass="input" prefHeight="38" onAction="#search"/>
-    <Button text="🔍 Search" onAction="#search" styleClass="primary-btn" prefWidth="110" prefHeight="38"/>
-   </HBox>
+    <!-- MAIN CONTENT -->
+    <center>
+        <VBox spacing="20" styleClass="page">
+            <padding>
+                <Insets top="32" right="36" bottom="32" left="36"/>
+            </padding>
 
-   <VBox spacing="10" styleClass="panel">
-    <Label text="Search Player Result" styleClass="section-title"/>
-    <ListView fx:id="playerResultList" prefHeight="120"/>
-    <Button text="➕ Follow Player" onAction="#followUser" styleClass="primary-btn"/>
-   </VBox>
+            <!-- HEADER -->
+            <VBox spacing="4">
+                <Label text="♥  Friendlist &amp; Follow System" styleClass="page-title"/>
+                <Label text="Manage network relations, incoming follow requests, and filters."
+                       styleClass="muted"/>
+            </VBox>
 
-   <!-- KONTEN UTAMA TIGA PANEL FLUID -->
-   <HBox spacing="16" VBox.vgrow="ALWAYS">
+            <!-- SEARCH BAR -->
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="panel"
+                  prefHeight="68" minHeight="68">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+                <TextField fx:id="searchField"
+                           promptText="Cari nama teman mabar..."
+                           HBox.hgrow="ALWAYS"
+                           styleClass="input"
+                           prefHeight="40"
+                           onAction="#search"/>
+                <Button text="🔍  Search"
+                        onAction="#search"
+                        styleClass="primary-btn"
+                        prefWidth="130"
+                        prefHeight="40"/>
+            </HBox>
 
-    <!-- PANEL 1: DAFTAR TEMAN UTAMA -->
-    <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
-     <Label text="Friends Database" styleClass="section-title"/>
-     <ListView fx:id="friendList" VBox.vgrow="ALWAYS"/>
-     <HBox spacing="10">
-      <Button text="❌ Unfollow" onAction="#removeFriend" styleClass="ghost-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="36"/>
-      <Button text="🚫 Block User" onAction="#blockFriend" styleClass="danger-btn" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="36"/>
-     </HBox>
-    </VBox>
+            <!-- Search Result Panel -->
+            <VBox spacing="10" styleClass="panel">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Search Player Result" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="👁  View Profile"
+                            onAction="#viewProfileFromSearch"
+                            styleClass="secondary-flat-btn"
+                            prefHeight="36"/>
+                    <Button text="➕  Follow Player"
+                            onAction="#followUser"
+                            styleClass="primary-btn"
+                            prefHeight="36"/>
+                </HBox>
+                <ListView fx:id="playerResultList"
+                          prefHeight="120"
+                          styleClass="list-view"/>
+            </VBox>
 
-    <!-- PANEL 2: REQUEST FOLLBACK -->
-    <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
-     <Label text="Follow Requests" styleClass="section-title"/>
-     <ListView fx:id="requestList" VBox.vgrow="ALWAYS"/>
-     <Button text="🤝 Accept Mutual Follow" onAction="#accept" styleClass="primary-btn" maxWidth="Infinity" prefHeight="36"/>
-    </VBox>
+            <!-- THREE COLUMN LAYOUT -->
+            <HBox spacing="16" VBox.vgrow="ALWAYS">
 
-    <!-- PANEL 3: DAFTAR BLOKIR (LEBIH RAMPING) -->
-    <VBox spacing="12" styleClass="panel" prefWidth="240" minWidth="200">
-     <Label text="Blacklisted Users" styleClass="section-title"/>
-     <ListView fx:id="blockedList" VBox.vgrow="ALWAYS"/>
-    </VBox>
+                <!-- Friends Database -->
+                <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
+                    <Label text="Friends Database" styleClass="section-title"/>
+                    <ListView fx:id="friendList"
+                              VBox.vgrow="ALWAYS"
+                              styleClass="list-view"/>
+                    <HBox spacing="10">
+                        <Button text="❌  Unfollow"
+                                onAction="#removeFriend"
+                                styleClass="ghost-btn"
+                                HBox.hgrow="ALWAYS"
+                                maxWidth="Infinity"
+                                prefHeight="38"/>
+                        <Button text="🚫  Block User"
+                                onAction="#blockFriend"
+                                styleClass="danger-btn"
+                                HBox.hgrow="ALWAYS"
+                                maxWidth="Infinity"
+                                prefHeight="38"/>
+                    </HBox>
+                </VBox>
 
-   </HBox>
+                <!-- Follow Requests -->
+                <VBox spacing="12" styleClass="panel" HBox.hgrow="ALWAYS">
+                    <Label text="Follow Requests" styleClass="section-title"/>
+                    <ListView fx:id="requestList"
+                              VBox.vgrow="ALWAYS"
+                              styleClass="list-view"/>
+                    <Button text="🤝  Accept Mutual Follow"
+                            onAction="#accept"
+                            styleClass="primary-btn"
+                            maxWidth="Infinity"
+                            prefHeight="38"/>
+                </VBox>
 
-   <!-- LOG NOTIFIKASI AKSI -->
-   <Label fx:id="actionLabel" styleClass="stat-bar" maxWidth="Infinity" prefHeight="36"/>
-  </VBox>
- </center>
+                <!-- Blacklisted Users -->
+                <VBox spacing="12" styleClass="panel" prefWidth="260" minWidth="220">
+                    <Label text="Blacklisted Users" styleClass="section-title"/>
+                    <ListView fx:id="blockedList"
+                              VBox.vgrow="ALWAYS"
+                              styleClass="list-view"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- Status Bar -->
+            <Label fx:id="actionLabel"
+                   styleClass="stat-bar"
+                   maxWidth="Infinity"
+                   prefHeight="40"/>
+        </VBox>
+    </center>
 </BorderPane>

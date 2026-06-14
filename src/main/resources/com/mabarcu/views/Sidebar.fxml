@@ -59,8 +59,14 @@
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>
 
-        <Button text="✉  Chat"
+        <Button text="✉  Global Chat"
                 onAction="#goChat"
+                styleClass="nav-btn"
+                maxWidth="Infinity"
+                alignment="BASELINE_LEFT"/>
+
+        <Button text="💬  Private Chat"
+                onAction="#goPrivateChat"
                 styleClass="nav-btn"
                 maxWidth="Infinity"
                 alignment="BASELINE_LEFT"/>

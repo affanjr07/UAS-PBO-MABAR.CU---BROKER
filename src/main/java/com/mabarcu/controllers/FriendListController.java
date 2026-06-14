@@ -79,6 +79,19 @@ public class FriendListController extends BaseNav {
     }
 
     @FXML
+    public void viewProfileFromSearch() {
+        User selectedPlayer = playerResultList.getSelectionModel().getSelectedItem();
+
+        if (selectedPlayer == null) {
+            actionLabel.setText("Pilih player dulu dari hasil pencarian.");
+            return;
+        }
+
+        AppData.selectedUser = Database.findUserById(selectedPlayer.getId());
+        goUserProfile();
+    }
+
+    @FXML
     public void accept() {
         String r = requestList.getSelectionModel().getSelectedItem();
 

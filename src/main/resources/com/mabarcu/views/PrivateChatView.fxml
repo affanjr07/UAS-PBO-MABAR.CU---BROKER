@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Circle?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mabarcu.controllers.ChatController"
+            fx:controller="com.mabarcu.controllers.PrivateChatController"
             styleClass="root-bg"
             prefWidth="1200"
             prefHeight="760">
@@ -30,20 +30,20 @@
                     <Insets top="32" right="36" bottom="32" left="36"/>
                 </padding>
 
-                <!-- Header with Channel Selector -->
+                <!-- Header -->
                 <HBox spacing="12" alignment="CENTER_LEFT">
                     <VBox spacing="4" HBox.hgrow="ALWAYS">
-                        <Label text="✉  Realtime Chat Server"
+                        <Label text="✉  Private Messages"
                                styleClass="page-title"/>
-                        <Label text="Pilih komunitas game, lalu chat dengan player di channel tersebut."
+                        <Label text="Kirim pesan pribadi ke teman mabar kamu. Hanya untuk user yang saling follow."
                                styleClass="muted"/>
                     </VBox>
 
-                    <ComboBox fx:id="channelBox"
-                              prefWidth="280"
-                              prefHeight="40"
-                              promptText="Pilih komunitas game"
-                              styleClass="combo-box"/>
+                    <Button text="⟳  Refresh"
+                            onAction="#refreshChat"
+                            styleClass="secondary-flat-btn"
+                            prefHeight="40"
+                            prefWidth="130"/>
                 </HBox>
 
                 <!-- Main Chat Layout -->
@@ -58,9 +58,9 @@
                         <VBox spacing="2">
                             <HBox alignment="CENTER_LEFT" spacing="8">
                                 <Circle radius="5" fill="#52b788"/>
-                                <Label text="Active Contacts" styleClass="stat-label-alt"/>
+                                <Label text="Mutual Friends" styleClass="stat-label-alt"/>
                             </HBox>
-                            <Label text="Player di komunitas game terpilih"
+                            <Label text="Player yang saling follow"
                                    styleClass="muted"
                                    style="-fx-font-size: 11px;"/>
                         </VBox>
@@ -78,7 +78,7 @@
 
                         <HBox alignment="CENTER_LEFT" spacing="8">
                             <Circle radius="4" fill="#52b788"/>
-                            <Label text="Community Game Channel"
+                            <Label fx:id="chatPartnerLabel" text="Private Message"
                                    styleClass="section-title"/>
                         </HBox>
 
@@ -89,7 +89,7 @@
                         <VBox spacing="8" styleClass="chat-input-container">
                             <HBox spacing="10" alignment="CENTER_LEFT">
                                 <TextField fx:id="messageField"
-                                           promptText="Tulis pesan komunitas game..."
+                                           promptText="Tulis pesan..."
                                            HBox.hgrow="ALWAYS"
                                            styleClass="input"
                                            prefHeight="44"
@@ -116,7 +116,7 @@
 
                             <HBox alignment="CENTER_RIGHT" styleClass="action-footer">
                                 <Label fx:id="statusLabel"
-                                       text="Pilih komunitas game untuk mulai chat"
+                                       text="Pilih teman untuk mulai chat"
                                        styleClass="chat-status-label"/>
                             </HBox>
                         </VBox>

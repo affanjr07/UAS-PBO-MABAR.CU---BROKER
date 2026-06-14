@@ -24,8 +24,18 @@ public abstract class BaseNav {
         MainApp.setRoot("PartyRoomView");
     }
 
+    @FXML
     public void goFriends() {
         MainApp.setRoot("FriendListView");
+    }
+
+    @FXML
+    public void goPrivateChat() {
+        MainApp.setRoot("PrivateChatView");
+    }
+
+    public void goUserProfile() {
+        MainApp.setRoot("UserProfileView");
     }
 
     public void logout() {

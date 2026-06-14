@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mabarcu.controllers.UserProfileController"
+            styleClass="root-bg"
+            prefWidth="1200"
+            prefHeight="760">
+
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    styleClass="main-scrollpane"
+                    vbarPolicy="AS_NEEDED">
+
+            <VBox spacing="24" styleClass="page">
+                <padding>
+                    <Insets top="32" right="36" bottom="32" left="36"/>
+                </padding>
+
+                <!-- Hero Banner -->
+                <VBox spacing="14" styleClass="hero">
+                    <VBox spacing="4">
+                        <Label fx:id="profileHeader"
+                               text="Display Name • @username"
+                               styleClass="hero-title"/>
+
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Circle radius="5" fill="#52b788"/>
+                            <Label text="STATUS:" styleClass="hero-status-tag"/>
+                            <Label text="Online" styleClass="success-text" fx:id="lblStatus"
+                                   style="-fx-font-weight: 700;"/>
+                        </HBox>
+
+                        <HBox spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 8 0 0 0;">
+                            <HBox spacing="4" alignment="CENTER_LEFT">
+                                <Label fx:id="followersLabel" text="0" styleClass="hero-title" style="-fx-font-size: 16px;"/>
+                                <Label text="Followers" styleClass="muted"/>
+                            </HBox>
+                            <HBox spacing="4" alignment="CENTER_LEFT">
+                                <Label fx:id="followingLabel" text="0" styleClass="hero-title" style="-fx-font-size: 16px;"/>
+                                <Label text="Following" styleClass="muted"/>
+                            </HBox>
+                            <HBox spacing="4" alignment="CENTER_LEFT">
+                                <Label fx:id="friendsLabel" text="0" styleClass="hero-title" style="-fx-font-size: 16px;"/>
+                                <Label text="Friends" styleClass="muted"/>
+                            </HBox>
+                        </HBox>
+                    </VBox>
+
+                    <Separator styleClass="hero-divider"/>
+
+                    <HBox spacing="18">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="FAVORITE GAME" styleClass="input-label"/>
+                            <Label fx:id="gameValue" text="-" styleClass="section-title"/>
+                        </VBox>
+
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="RANK" styleClass="input-label"/>
+                            <Label fx:id="rankValue" text="-" styleClass="section-title"/>
+                        </VBox>
+
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="ROLE" styleClass="input-label"/>
+                            <Label fx:id="roleValue" text="-" styleClass="section-title"/>
+                        </VBox>
+
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="REGION" styleClass="input-label"/>
+                            <Label fx:id="regionValue" text="-" styleClass="section-title"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Actions and Bio -->
+                <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+                    <!-- Profile Details -->
+                    <VBox spacing="16" styleClass="panel" HBox.hgrow="ALWAYS">
+                        <Label text="Gamer Profile" styleClass="section-title"/>
+
+                        <VBox spacing="6">
+                            <Label text="SHORT BIO" styleClass="input-label"/>
+                            <Label fx:id="bioLabel" text="-" styleClass="muted" wrapText="true"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Separator styleClass="hero-divider"/>
+
+                        <HBox spacing="14" alignment="CENTER_LEFT">
+                            <Button fx:id="followButton" 
+                                    text="➕  Follow"
+                                    onAction="#toggleFollow"
+                                    styleClass="primary-green-btn"
+                                    prefHeight="40"
+                                    prefWidth="160"/>
+
+                            <Button fx:id="messageButton" 
+                                    text="✉  Send Message"
+                                    onAction="#sendMessage"
+                                    styleClass="secondary-flat-btn"
+                                    prefHeight="40"
+                                    prefWidth="160"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Empty Space to balance layout -->
+                    <VBox styleClass="panel" prefWidth="340" minWidth="300">
+                        <Label text="Player Info" styleClass="section-title"/>
+                        <Label text="Kamu bisa mengirim pesan secara pribadi jika kalian sudah saling follow." 
+                               styleClass="muted" wrapText="true" style="-fx-padding: 10 0 0 0;"/>
+                    </VBox>
+
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

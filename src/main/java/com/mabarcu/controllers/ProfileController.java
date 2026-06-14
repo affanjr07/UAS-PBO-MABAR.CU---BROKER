@@ -22,6 +22,10 @@ public class ProfileController extends BaseNav {
     @FXML private Label profileHeader;
     @FXML private Label saveMsg;
     @FXML private Label lblStatus;
+    
+    @FXML private Label followersLabel;
+    @FXML private Label followingLabel;
+    @FXML private Label friendsLabel;
 
     @FXML private Label gameValue;
     @FXML private Label rankValue;
@@ -89,6 +93,10 @@ public class ProfileController extends BaseNav {
         setLabel(rankValue, safe(u.getGameRank()));
         setLabel(roleValue, safe(u.getPreferredRole()));
         setLabel(regionValue, safe(u.getRegion()));
+        
+        setLabel(followersLabel, String.valueOf(u.getFollowers()));
+        setLabel(followingLabel, String.valueOf(u.getFollowing()));
+        setLabel(friendsLabel, String.valueOf(u.getFriends()));
     }
 
     private void loadActivitiesRealtime() {

@@ -22,6 +22,7 @@ public class AppService {
     private final RoomChatMessageRepository roomChats;
     private final NotificationRepository notifications;
     private final ActivityRepository activities;
+    private final PrivateMessageRepository privateMessages;
     private final PasswordEncoder encoder;
 
     public AppService(
@@ -34,6 +35,7 @@ public class AppService {
             RoomChatMessageRepository roomChats,
             NotificationRepository notifications,
             ActivityRepository activities,
+            PrivateMessageRepository privateMessages,
             PasswordEncoder encoder
     ) {
         this.users = users;
@@ -45,6 +47,7 @@ public class AppService {
         this.roomChats = roomChats;
         this.notifications = notifications;
         this.activities = activities;
+        this.privateMessages = privateMessages;
         this.encoder = encoder;
     }
 
@@ -152,6 +155,10 @@ public class AppService {
         return users.findByUsernameIgnoreCase(username).orElse(null);
     }
 
+    public User findUserById(int id) {
+        return users.findById(id).orElse(null);
+    }
+
     @Transactional
     public User updateProfile(@Valid User u) {
         User db = users.findById(u.getId()).orElseThrow();
@@ -246,6 +253,35 @@ public class AppService {
         String name = label.split(" • ")[0];
         friends.deleteByUserIdAndFriendNameContainingIgnoreCase(userId, name);
         addActivity(userId, "Menghapus teman " + name);
+    }
+
+    public boolean isMutualFollow(int userId1, int userId2) {
+        User user1 = users.findById(userId1).orElse(null);
+        User user2 = users.findById(userId2).orElse(null);
+        if (user1 == null || user2 == null) return false;
+
+        boolean user1FollowsUser2 = friends.findByUserId(userId1).stream()
+                .anyMatch(f -> f.getFriendName().equalsIgnoreCase(user2.getDisplayName()));
+        boolean user2FollowsUser1 = friends.findByUserId(userId2).stream()
+                .anyMatch(f -> f.getFriendName().equalsIgnoreCase(user1.getDisplayName()));
+
+        return user1FollowsUser2 && user2FollowsUser1;
+    }
+
+    public List<User> getMutualFriends(int userId) {
+        User user = users.findById(userId).orElse(null);
+        if (user == null) return List.of();
+
+        List<String> followingNames = friends.findByUserId(userId).stream()
+                .map(Friend::getFriendName)
+                .toList();
+
+        return users.findAll().stream()
+                .filter(u -> u.getId() != userId)
+                .filter(u -> followingNames.stream().anyMatch(name -> name.equalsIgnoreCase(u.getDisplayName())))
+                .filter(u -> friends.findByUserId(u.getId()).stream()
+                        .anyMatch(f -> f.getFriendName().equalsIgnoreCase(user.getDisplayName())))
+                .toList();
     }
 
     public List<String> getRequests(int userId) {
@@ -473,6 +509,32 @@ public class AppService {
                 .stream()
                 .map(Activity::getText)
                 .toList();
+    }
+
+    public List<String> getPrivateMessages(int userId1, int userId2) {
+        return privateMessages.findConversation(userId1, userId2)
+                .stream()
+                .map(PrivateMessage::display)
+                .toList();
+    }
+
+    @Transactional
+    public void sendPrivateMessage(int senderId, int receiverId, String message) {
+        if (message == null || message.isBlank()) {
+            throw new IllegalArgumentException("Pesan tidak boleh kosong.");
+        }
+
+        if (!isMutualFollow(senderId, receiverId)) {
+            throw new IllegalArgumentException("Tidak dapat mengirim pesan. Kalian harus saling follow.");
+        }
+
+        User sender = users.findById(senderId).orElseThrow();
+        User receiver = users.findById(receiverId).orElseThrow();
+
+        privateMessages.save(new PrivateMessage(senderId, receiverId, sender.getDisplayName(), receiver.getDisplayName(), message.trim()));
+
+        // Add notification for the receiver
+        addNotification(receiverId, "Pesan baru dari " + sender.getDisplayName());
     }
 
     private int findUserIdByDisplay(String display) {

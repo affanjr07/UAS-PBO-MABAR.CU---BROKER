@@ -176,4 +176,24 @@ public class Database {
     public static void addActivity(int userId, String text) {
         service().addActivity(userId, text);
     }
+
+    public static boolean isMutualFollow(int userId1, int userId2) {
+        return service().isMutualFollow(userId1, userId2);
+    }
+
+    public static List<String> getPrivateMessages(int userId1, int userId2) {
+        return service().getPrivateMessages(userId1, userId2);
+    }
+
+    public static void sendPrivateMessage(int senderId, int receiverId, String message) {
+        service().sendPrivateMessage(senderId, receiverId, message);
+    }
+
+    public static List<User> getMutualFriends(int userId) {
+        return service().getMutualFriends(userId);
+    }
+
+    public static User findUserById(int id) {
+        return service().findUserById(id);
+    }
 }

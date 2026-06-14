@@ -18,9 +18,9 @@
 
     <center>
         <StackPane>
-            <Circle radius="280"
-                    fill="#14241c"
-                    opacity="0.15"
+            <Circle radius="300"
+                    fill="#0f1f16"
+                    opacity="0.2"
                     StackPane.alignment="BOTTOM_RIGHT"
                     translateX="100"
                     translateY="100"
@@ -28,15 +28,17 @@
 
             <VBox spacing="24" styleClass="page">
                 <padding>
-                    <Insets top="30" right="30" bottom="30" left="30"/>
+                    <Insets top="32" right="36" bottom="32" left="36"/>
                 </padding>
 
+                <!-- Header -->
                 <VBox spacing="4">
-                    <Label text="Matchmaking Hub" styleClass="page-title"/>
+                    <Label text="⚔  Matchmaking Hub" styleClass="page-title"/>
                     <Label text="Filter player berdasarkan game, rank, role, dan region untuk mencari teman mabar yang cocok."
                            styleClass="muted"/>
                 </VBox>
 
+                <!-- Filter Bar -->
                 <HBox spacing="14"
                       alignment="CENTER_LEFT"
                       styleClass="panel"
@@ -72,39 +74,48 @@
 
                     <Region HBox.hgrow="ALWAYS"/>
 
-                    <Button text="🔍 Search"
+                    <Button text="🔍  Search"
                             onAction="#search"
                             styleClass="primary-green-btn"
                             prefWidth="130"
                             prefHeight="40"/>
                 </HBox>
 
+                <!-- Info Bar -->
                 <Label fx:id="infoLabel"
                        styleClass="stat-bar"
                        maxWidth="Infinity"
-                       prefHeight="40">
+                       prefHeight="42">
                     <padding>
-                        <Insets left="12" right="12"/>
+                        <Insets left="16" right="16"/>
                     </padding>
                 </Label>
 
+                <!-- Results List -->
                 <ListView fx:id="resultList"
                           VBox.vgrow="ALWAYS"
                           styleClass="list-view"/>
 
+                <!-- Action Buttons -->
                 <HBox spacing="16"
                       alignment="CENTER_LEFT"
                       styleClass="action-footer">
 
-                    <Button text="⚔️ Invite Selected Team"
+                    <Button text="⚔  Invite Selected Team"
                             onAction="#inviteSelected"
                             styleClass="primary-green-btn"
                             prefHeight="44"
                             prefWidth="220"/>
 
-                    <Button text="➕ Follow Selected User"
+                    <Button text="➕  Follow Selected User"
                             onAction="#followSelected"
                             styleClass="secondary-flat-btn"
+                            prefHeight="44"
+                            prefWidth="220"/>
+
+                    <Button text="👁  View Profile"
+                            onAction="#viewProfile"
+                            styleClass="ghost-btn"
                             prefHeight="44"
                             prefWidth="220"/>
                 </HBox>

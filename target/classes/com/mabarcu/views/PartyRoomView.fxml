@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -19,9 +18,9 @@
 
     <center>
         <StackPane>
-            <Circle radius="300"
-                    fill="#14241c"
-                    opacity="0.15"
+            <Circle radius="320"
+                    fill="#0f1f16"
+                    opacity="0.2"
                     StackPane.alignment="BOTTOM_RIGHT"
                     translateX="100"
                     translateY="100"
@@ -29,34 +28,34 @@
 
             <VBox spacing="24" styleClass="page">
                 <padding>
-                    <Insets top="30" right="30" bottom="30" left="30"/>
+                    <Insets top="32" right="36" bottom="32" left="36"/>
                 </padding>
 
+                <!-- Header -->
                 <HBox spacing="12" alignment="CENTER_LEFT">
-                    <VBox spacing="4">
-                        <Label text="Party Room Hub" styleClass="page-title"/>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="⚑  Party Room Hub" styleClass="page-title"/>
                         <Label text="Buat room sesuai game, rank, role, dan kumpulkan squad kamu."
                                styleClass="muted"/>
                     </VBox>
 
-                    <Region HBox.hgrow="ALWAYS"/>
-
-                    <Button text="🔄 Refresh"
+                    <Button text="⟳  Refresh"
                             onAction="#refreshRooms"
                             styleClass="secondary-flat-btn"
-                            prefHeight="38"
-                            prefWidth="110"/>
+                            prefHeight="40"
+                            prefWidth="130"/>
                 </HBox>
 
+                <!-- Main 3-Column Layout -->
                 <HBox spacing="20" VBox.vgrow="ALWAYS">
 
-                    <VBox spacing="14" prefWidth="320" minWidth="300" styleClass="panel">
+                    <!-- Left: Create Room Form -->
+                    <VBox spacing="14" prefWidth="300" minWidth="280" styleClass="panel">
                         <padding>
                             <Insets top="20" right="20" bottom="20" left="20"/>
                         </padding>
 
                         <Label text="Create Room" styleClass="section-title"/>
-                        <Region prefHeight="4"/>
 
                         <ScrollPane fitToWidth="true"
                                     hbarPolicy="NEVER"
@@ -64,73 +63,76 @@
                                     VBox.vgrow="ALWAYS"
                                     style="-fx-background-color: transparent; -fx-background: transparent;">
 
-                            <VBox spacing="12">
+                            <VBox spacing="14">
 
                                 <VBox spacing="5">
-                                    <Label text="Game" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Label text="GAME" styleClass="input-label"/>
                                     <ComboBox fx:id="gameBox"
                                               maxWidth="Infinity"
                                               styleClass="combo-box"
-                                              prefHeight="38"/>
+                                              prefHeight="40"/>
                                 </VBox>
 
                                 <VBox spacing="5">
-                                    <Label text="Rank" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Label text="RANK" styleClass="input-label"/>
                                     <ComboBox fx:id="rankBox"
                                               maxWidth="Infinity"
                                               styleClass="combo-box"
-                                              prefHeight="38"/>
+                                              prefHeight="40"/>
                                 </VBox>
 
                                 <VBox spacing="5">
-                                    <Label text="Role Dibutuhkan" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Label text="ROLE DIBUTUHKAN" styleClass="input-label"/>
                                     <ComboBox fx:id="roleBox"
                                               maxWidth="Infinity"
                                               styleClass="combo-box"
-                                              prefHeight="38"/>
+                                              prefHeight="40"/>
                                 </VBox>
 
                                 <VBox spacing="5">
-                                    <Label text="Tipe Room" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Label text="TIPE ROOM" styleClass="input-label"/>
                                     <ComboBox fx:id="typeBox"
                                               maxWidth="Infinity"
                                               styleClass="combo-box"
-                                              prefHeight="38"/>
+                                              prefHeight="40"/>
                                 </VBox>
 
                                 <VBox spacing="5">
-                                    <Label text="Max Player" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Label text="MAX PLAYER" styleClass="input-label"/>
                                     <Spinner fx:id="maxPlayerSpinner"
                                              editable="true"
                                              maxWidth="Infinity"
                                              styleClass="spinner"
-                                             prefHeight="38"/>
+                                             prefHeight="40"/>
                                 </VBox>
 
                             </VBox>
                         </ScrollPane>
 
-                        <Button text="Create Room"
+                        <Button text="✦  Create Room"
                                 onAction="#createRoom"
                                 maxWidth="Infinity"
                                 styleClass="primary-green-btn"
-                                prefHeight="40"/>
+                                prefHeight="42"/>
 
-                        <VBox spacing="6"
-                              style="-fx-background-color: #111f17; -fx-background-radius: 8; -fx-padding: 10;">
-                            <Label text="Console Info"
-                                   styleClass="stat-label-alt"
-                                   style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
+                        <!-- Console Info -->
+                        <VBox spacing="6" styleClass="stat-bar">
+                            <Label text="CONSOLE"
+                                   style="-fx-text-fill: #3a6b52;
+                                          -fx-font-size: 9px;
+                                          -fx-font-weight: 800;"/>
 
                             <Label fx:id="infoLabel"
                                    text="Pilih atau buat room baru untuk memulai sesi."
                                    wrapText="true"
-                                   styleClass="muted"
-                                   style="-fx-font-size: 11px;"/>
+                                   style="-fx-text-fill: #52b788;
+                                          -fx-font-size: 11px;
+                                          -fx-font-family: 'Cascadia Code', 'Consolas', monospace;"/>
                         </VBox>
                     </VBox>
 
-                    <VBox spacing="14" prefWidth="420" styleClass="panel" HBox.hgrow="ALWAYS">
+                    <!-- Center: Room List -->
+                    <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
                         <padding>
                             <Insets top="20" right="20" bottom="20" left="20"/>
                         </padding>
@@ -142,14 +144,14 @@
                                   styleClass="list-view"/>
 
                         <HBox spacing="12" styleClass="action-footer">
-                            <Button text="⚔️ Join Selected Room"
+                            <Button text="⚔  Join Selected"
                                     onAction="#joinRoom"
                                     maxWidth="Infinity"
                                     HBox.hgrow="ALWAYS"
                                     styleClass="primary-green-btn"
                                     prefHeight="42"/>
 
-                            <Button text="Leave Current Room"
+                            <Button text="Leave Room"
                                     onAction="#leaveRoom"
                                     maxWidth="Infinity"
                                     HBox.hgrow="ALWAYS"
@@ -158,14 +160,18 @@
                         </HBox>
                     </VBox>
 
-                    <VBox spacing="16" prefWidth="360" minWidth="320">
+                    <!-- Right: Members + Chat -->
+                    <VBox spacing="16" prefWidth="340" minWidth="300">
 
                         <VBox spacing="12" styleClass="panel" prefHeight="220">
                             <padding>
                                 <Insets top="16" right="16" bottom="16" left="16"/>
                             </padding>
 
-                            <Label text="Room Members" styleClass="section-title"/>
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Label text="👥" style="-fx-font-size: 14px;"/>
+                                <Label text="Room Members" styleClass="section-title"/>
+                            </HBox>
 
                             <ListView fx:id="memberList"
                                       VBox.vgrow="ALWAYS"
@@ -177,7 +183,10 @@
                                 <Insets top="16" right="16" bottom="16" left="16"/>
                             </padding>
 
-                            <Label text="Room Tactical Chat" styleClass="section-title"/>
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Circle radius="4" fill="#52b788"/>
+                                <Label text="Room Tactical Chat" styleClass="section-title"/>
+                            </HBox>
 
                             <ListView fx:id="roomChatList"
                                       VBox.vgrow="ALWAYS"

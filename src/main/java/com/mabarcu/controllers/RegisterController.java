@@ -1,54 +1,60 @@
 package com.mabarcu.controllers;
 
 import com.mabarcu.MainApp;
-import com.mabarcu.services.AppData;
+import com.mabarcu.services.Database;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class LoginController {
+public class RegisterController {
+
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
     @FXML private Label messageLabel;
 
     @FXML
     public void initialize() {
         usernameField.clear();
         passwordField.clear();
+        confirmPasswordField.clear();
     }
 
     @FXML
-    public void login() {
+    public void register() {
         String u = usernameField.getText().trim();
-        if (u.isEmpty()) {
-            showFeedback("Username wajib diisi.", true);
+        String p = passwordField.getText();
+        String c = confirmPasswordField.getText();
+
+        if (u.isEmpty() || p.isEmpty() || c.isEmpty()) {
+            showFeedback("Semua field wajib diisi.", true);
+            return;
+        }
+
+        if (!p.equals(c)) {
+            showFeedback("Password dan konfirmasi tidak cocok.", true);
+            return;
+        }
+
+        if (p.length() < 4) {
+            showFeedback("Password minimal 4 karakter.", true);
             return;
         }
 
         try {
-            AppData.login(u, passwordField.getText());
-            Alert success = new Alert(Alert.AlertType.INFORMATION, "Login berhasil! Selamat datang, " + AppData.currentUser.getDisplayName());
+            Database.register(u, p);
+            Alert success = new Alert(Alert.AlertType.INFORMATION, "Registrasi berhasil! Silakan login.");
             success.showAndWait();
-            MainApp.setRoot("DashboardView");
+            goLogin();
         } catch (Exception e) {
-            Alert error = new Alert(Alert.AlertType.ERROR, e.getMessage());
-            error.showAndWait();
             showFeedback(e.getMessage(), true);
         }
     }
 
     @FXML
-    public void register() {
-        MainApp.setRoot("RegisterView");
+    public void goLogin() {
+        MainApp.setRoot("LoginView");
     }
 
-    @FXML
-    public void forgotPassword() {
-        showFeedback("Reset password demo aktif. Database lokal tetap aman.", false);
-    }
-
-    /**
-     * Helper Method untuk mengatur warna pesan feedback secara dinamis
-     */
     private void showFeedback(String text, boolean isError) {
         messageLabel.setText(text);
         messageLabel.getStyleClass().removeAll("success-text", "error-text");

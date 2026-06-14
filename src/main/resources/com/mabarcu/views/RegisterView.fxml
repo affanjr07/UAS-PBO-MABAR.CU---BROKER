@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mabarcu.controllers.RegisterController"
+            styleClass="root-bg"
+            prefWidth="1000"
+            prefHeight="650">
+  <center>
+    <StackPane BorderPane.alignment="CENTER">
+
+      <!-- Ambient Background Circles -->
+      <StackPane mouseTransparent="true" maxWidth="Infinity" maxHeight="Infinity">
+        <Circle radius="320" fill="#0c1a13" opacity="0.7"
+                StackPane.alignment="TOP_RIGHT"
+                translateX="100" translateY="-100"/>
+        <Circle radius="250" fill="#112219" opacity="0.5"
+                StackPane.alignment="BOTTOM_LEFT"
+                translateX="-100" translateY="100"/>
+      </StackPane>
+
+      <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+      </padding>
+
+      <!-- Register Card -->
+      <VBox alignment="CENTER" spacing="28" styleClass="login-card"
+            maxWidth="450" maxHeight="600">
+        <padding>
+          <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <!-- Branding -->
+        <VBox alignment="CENTER" spacing="4">
+          <Label text="Create Account" styleClass="brand-title" style="-fx-font-size: 32px;"/>
+          <Label text="Bergabunglah dengan komunitas MABAR.CU"
+                 styleClass="muted"
+                 alignment="CENTER"
+                 textAlignment="CENTER"
+                 wrapText="true"
+                 style="-fx-font-size: 12px;"/>
+        </VBox>
+
+        <Region prefHeight="2"/>
+
+        <!-- Form Fields -->
+        <VBox spacing="16" maxWidth="Infinity">
+          <VBox spacing="6">
+            <Label text="USERNAME" styleClass="input-label"/>
+            <TextField fx:id="usernameField"
+                       promptText="Pilih username unik..."
+                       styleClass="modern-input"
+                       prefHeight="44"/>
+          </VBox>
+
+          <VBox spacing="6">
+            <Label text="PASSWORD" styleClass="input-label"/>
+            <PasswordField fx:id="passwordField"
+                           promptText="Masukkan password..."
+                           styleClass="modern-input"
+                           prefHeight="44"/>
+          </VBox>
+
+          <VBox spacing="6">
+            <Label text="CONFIRM PASSWORD" styleClass="input-label"/>
+            <PasswordField fx:id="confirmPasswordField"
+                           promptText="Ulangi password..."
+                           styleClass="modern-input"
+                           prefHeight="44"/>
+          </VBox>
+        </VBox>
+
+        <Region prefHeight="2"/>
+
+        <!-- Action Buttons -->
+        <VBox spacing="14" maxWidth="Infinity" alignment="CENTER">
+          <Button text="Register"
+                  onAction="#register"
+                  styleClass="primary-green-btn"
+                  maxWidth="Infinity"
+                  prefHeight="44"/>
+
+          <HBox alignment="CENTER" spacing="12" maxWidth="Infinity">
+            <Button text="Back to Login"
+                    onAction="#goLogin"
+                    styleClass="secondary-flat-btn"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="Infinity"
+                    prefHeight="40"/>
+          </HBox>
+        </VBox>
+
+        <!-- Feedback Label -->
+        <Label fx:id="messageLabel"
+               styleClass="message-label"
+               wrapText="true"
+               alignment="CENTER"
+               textAlignment="CENTER"
+               maxWidth="Infinity"/>
+      </VBox>
+    </StackPane>
+  </center>
+</BorderPane>
