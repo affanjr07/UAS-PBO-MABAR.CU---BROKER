@@ -16,6 +16,7 @@ public class MainApp extends Application {
 
     private static Stage mainStage;
     private static ConfigurableApplicationContext springContext;
+    private static String currentView = "LoginView";
 
     @Override
     public void init() {
@@ -49,6 +50,8 @@ public class MainApp extends Application {
 
     public static void setRoot(String fxmlName) {
         try {
+            currentView = fxmlName;
+
             FXMLLoader loader = new FXMLLoader(
                     MainApp.class.getResource("/com/mabarcu/views/" + fxmlName + ".fxml")
             );
@@ -81,6 +84,10 @@ public class MainApp extends Application {
 
             throw new RuntimeException("Gagal membuka halaman: " + fxmlName, e);
         }
+    }
+
+    public static String getCurrentView() {
+        return currentView;
     }
 
     @Override

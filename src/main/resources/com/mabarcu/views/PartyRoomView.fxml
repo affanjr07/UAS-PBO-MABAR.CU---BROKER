@@ -12,172 +12,196 @@
             prefWidth="1200"
             prefHeight="760"
             styleClass="root-bg">
- 
- <left>
-  <VBox spacing="0" prefWidth="250" styleClass="sidebar" BorderPane.alignment="CENTER">
-   <padding>
-    <Insets top="32" right="16" bottom="24" left="16"/>
-   </padding>
 
-   <VBox spacing="2" styleClass="sidebar-divider">
-    <padding>
-     <Insets bottom="20"/>
-    </padding>
-    <HBox alignment="CENTER_LEFT" spacing="10">
-     <StackPane style="-fx-background-color: #52b788; -fx-background-radius: 6;" prefWidth="12" prefHeight="12"/>
-     <Label text="MABAR.CU" styleClass="logo" style="-fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #ffffff;"/>
-    </HBox>
-    <Label text="Gaming Hub &amp; Network" styleClass="muted" style="-fx-font-size: 11px; -fx-opacity: 0.5;"/>
-   </VBox>
-   
-   <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: #14241c; -fx-background-radius: 10; -fx-padding: 12 14;">
-    <VBox.margin>
-     <Insets top="16" bottom="24"/>
-    </VBox.margin>
-    <StackPane alignment="BOTTOM_RIGHT">
-     <Circle radius="16" fill="#1b4332"/>
-     <Circle radius="4" fill="#52b788" stroke="#14241c" strokeWidth="1.5"/>
-    </StackPane>
-    <VBox spacing="1">
-     <Label text="Active Session" styleClass="muted" style="-fx-font-size: 10px; -fx-text-transform: uppercase;"/>
-     <Label text="Verified Player" style="-fx-text-fill: #ffffff; -fx-font-size: 13px; -fx-font-weight: bold;"/>
-    </VBox>
-   </HBox>
-   
-   <VBox spacing="6" VBox.vgrow="ALWAYS">
-    <Button text="Dashboard" onAction="#goDashboard" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-    <Button text="Matchmaking" onAction="#goMatchmaking" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-    <Button text="Party Room" onAction="#goParty" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn-active">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-    <Button text="Friendlist" onAction="#goFriends" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-    <Button text="Chat" onAction="#goChat" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-    <Button text="Profile" onAction="#goProfile" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-     <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-    </Button>
-   </VBox>
-   
-   <Button text="Logout" onAction="#logout" maxWidth="Infinity" alignment="CENTER" styleClass="danger-btn" style="-fx-background-radius: 8;">
-    <padding><Insets top="12" bottom="12"/></padding>
-   </Button>
-  </VBox>
- </left>
- 
- <center>
-  <StackPane>
-   <Circle radius="300" fill="#14241c" opacity="0.15" StackPane.alignment="BOTTOM_RIGHT" translateX="100" translateY="100" mouseTransparent="true"/>
+    <left>
+        <fx:include source="Sidebar.fxml"/>
+    </left>
 
-   <VBox spacing="24" styleClass="page">
-    <padding>
-     <Insets top="30" right="30" bottom="30" left="30"/>
-    </padding>
-    
-    <HBox spacing="12" alignment="CENTER_LEFT">
-     <VBox spacing="4">
-      <Label text="Party Room Hub" styleClass="page-title"/>
-      <Label text="Buat room sesuai game, rank, role, dan kumpulkan taktis squad kamu." styleClass="muted"/>
-     </VBox>
-     <Region HBox.hgrow="ALWAYS"/>
-     <!-- Styled Refresh Button -->
-     <Button text="🔄 Refresh" onAction="#refreshRooms" styleClass="secondary-flat-btn" prefHeight="38" prefWidth="110"/>
-    </HBox>
-    
-    <HBox spacing="20" VBox.vgrow="ALWAYS">
-     
-     <VBox spacing="14" prefWidth="320" minWidth="300" styleClass="panel">
-      <padding>
-       <Insets top="20" right="20" bottom="20" left="20"/>
-      </padding>
+    <center>
+        <StackPane>
+            <Circle radius="300"
+                    fill="#14241c"
+                    opacity="0.15"
+                    StackPane.alignment="BOTTOM_RIGHT"
+                    translateX="100"
+                    translateY="100"
+                    mouseTransparent="true"/>
 
-      <Label text="Create Room" styleClass="section-title"/>
-      <Region prefHeight="4"/>
+            <VBox spacing="24" styleClass="page">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
 
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">
-       <VBox spacing="12">
-        <VBox spacing="5">
-         <Label text="Game" styleClass="stat-label" style="-fx-font-size: 11px;"/>
-         <ComboBox fx:id="gameBox" maxWidth="Infinity" styleClass="combo-box" prefHeight="38"/>
-        </VBox>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="Party Room Hub" styleClass="page-title"/>
+                        <Label text="Buat room sesuai game, rank, role, dan kumpulkan squad kamu."
+                               styleClass="muted"/>
+                    </VBox>
 
-        <VBox spacing="5">
-         <Label text="Rank" styleClass="stat-label" style="-fx-font-size: 11px;"/>
-         <ComboBox fx:id="rankBox" maxWidth="Infinity" styleClass="combo-box" prefHeight="38"/>
-        </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
 
-        <VBox spacing="5">
-         <Label text="Role Dibutuhkan" styleClass="stat-label" style="-fx-font-size: 11px;"/>
-         <ComboBox fx:id="roleBox" maxWidth="Infinity" styleClass="combo-box" prefHeight="38"/>
-        </VBox>
+                    <Button text="🔄 Refresh"
+                            onAction="#refreshRooms"
+                            styleClass="secondary-flat-btn"
+                            prefHeight="38"
+                            prefWidth="110"/>
+                </HBox>
 
-        <VBox spacing="5">
-         <Label text="Tipe Room" styleClass="stat-label" style="-fx-font-size: 11px;"/>
-         <ComboBox fx:id="typeBox" maxWidth="Infinity" styleClass="combo-box" prefHeight="38"/>
-        </VBox>
+                <HBox spacing="20" VBox.vgrow="ALWAYS">
 
-        <VBox spacing="5">
-         <Label text="Max Player" styleClass="stat-label" style="-fx-font-size: 11px;"/>
-         <Spinner fx:id="maxPlayerSpinner" editable="true" maxWidth="Infinity" styleClass="spinner" prefHeight="38"/>
-        </VBox>
-       </VBox>
-      </ScrollPane>
+                    <VBox spacing="14" prefWidth="320" minWidth="300" styleClass="panel">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
 
-      <Button text="Create Room" onAction="#createRoom" maxWidth="Infinity" styleClass="primary-green-btn" prefHeight="40"/>
-      
-      <VBox spacing="6" style="-fx-background-color: #111f17; -fx-background-radius: 8; -fx-padding: 10;">
-       <Label text="Console Info" styleClass="stat-label-alt" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-       <Label fx:id="infoLabel" text="Pilih atau buat room baru untuk memulai sesi." wrapText="true" styleClass="muted" style="-fx-font-size: 11px;"/>
-      </VBox>
-     </VBox>
-     
-     <VBox spacing="14" prefWidth="420" styleClass="panel" HBox.hgrow="ALWAYS">
-      <padding>
-       <Insets top="20" right="20" bottom="20" left="20"/>
-      </padding>
+                        <Label text="Create Room" styleClass="section-title"/>
+                        <Region prefHeight="4"/>
 
-      <Label text="Available Rooms" styleClass="section-title"/>
-      <ListView fx:id="roomList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+                        <ScrollPane fitToWidth="true"
+                                    hbarPolicy="NEVER"
+                                    vbarPolicy="AS_NEEDED"
+                                    VBox.vgrow="ALWAYS"
+                                    style="-fx-background-color: transparent; -fx-background: transparent;">
 
-      <HBox spacing="12" styleClass="action-footer">
-       <Button text="⚔️ Join Selected Room" onAction="#joinRoom" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="primary-green-btn" prefHeight="42"/>
-       <Button text="Leave Current Room" onAction="#leaveRoom" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="secondary-flat-btn" prefHeight="42"/>
-      </HBox>
-     </VBox>
-     
-     <VBox spacing="16" prefWidth="360" minWidth="320">
-      
-      <VBox spacing="12" styleClass="panel" prefHeight="220">
-       <padding>
-        <Insets top="16" right="16" bottom="16" left="16"/>
-       </padding>
-       <Label text="Room Members" styleClass="section-title"/>
-       <ListView fx:id="memberList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
-      </VBox>
+                            <VBox spacing="12">
 
-      <VBox spacing="12" styleClass="panel" VBox.vgrow="ALWAYS">
-       <padding>
-        <Insets top="16" right="16" bottom="16" left="16"/>
-       </padding>
-       <Label text="Room Tactical Chat" styleClass="section-title"/>
+                                <VBox spacing="5">
+                                    <Label text="Game" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <ComboBox fx:id="gameBox"
+                                              maxWidth="Infinity"
+                                              styleClass="combo-box"
+                                              prefHeight="38"/>
+                                </VBox>
 
-       <ListView fx:id="roomChatList" VBox.vgrow="ALWAYS" styleClass="chat-list-view"/>
+                                <VBox spacing="5">
+                                    <Label text="Rank" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <ComboBox fx:id="rankBox"
+                                              maxWidth="Infinity"
+                                              styleClass="combo-box"
+                                              prefHeight="38"/>
+                                </VBox>
 
-       <HBox spacing="8" alignment="CENTER_LEFT">
-        <TextField fx:id="roomMessageField" promptText="Ketik chat taktis room..." HBox.hgrow="ALWAYS" styleClass="input" prefHeight="40" onAction="#sendRoomMessage"/>
-        <Button text="SEND" onAction="#sendRoomMessage" styleClass="primary-green-btn" prefHeight="40" prefWidth="80"/>
-       </HBox>
-      </VBox>
-     </VBox>
+                                <VBox spacing="5">
+                                    <Label text="Role Dibutuhkan" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <ComboBox fx:id="roleBox"
+                                              maxWidth="Infinity"
+                                              styleClass="combo-box"
+                                              prefHeight="38"/>
+                                </VBox>
 
-    </HBox>
-   </VBox>
-  </StackPane>
- </center>
+                                <VBox spacing="5">
+                                    <Label text="Tipe Room" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <ComboBox fx:id="typeBox"
+                                              maxWidth="Infinity"
+                                              styleClass="combo-box"
+                                              prefHeight="38"/>
+                                </VBox>
+
+                                <VBox spacing="5">
+                                    <Label text="Max Player" styleClass="stat-label" style="-fx-font-size: 11px;"/>
+                                    <Spinner fx:id="maxPlayerSpinner"
+                                             editable="true"
+                                             maxWidth="Infinity"
+                                             styleClass="spinner"
+                                             prefHeight="38"/>
+                                </VBox>
+
+                            </VBox>
+                        </ScrollPane>
+
+                        <Button text="Create Room"
+                                onAction="#createRoom"
+                                maxWidth="Infinity"
+                                styleClass="primary-green-btn"
+                                prefHeight="40"/>
+
+                        <VBox spacing="6"
+                              style="-fx-background-color: #111f17; -fx-background-radius: 8; -fx-padding: 10;">
+                            <Label text="Console Info"
+                                   styleClass="stat-label-alt"
+                                   style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
+
+                            <Label fx:id="infoLabel"
+                                   text="Pilih atau buat room baru untuk memulai sesi."
+                                   wrapText="true"
+                                   styleClass="muted"
+                                   style="-fx-font-size: 11px;"/>
+                        </VBox>
+                    </VBox>
+
+                    <VBox spacing="14" prefWidth="420" styleClass="panel" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+
+                        <Label text="Available Rooms" styleClass="section-title"/>
+
+                        <ListView fx:id="roomList"
+                                  VBox.vgrow="ALWAYS"
+                                  styleClass="list-view"/>
+
+                        <HBox spacing="12" styleClass="action-footer">
+                            <Button text="⚔️ Join Selected Room"
+                                    onAction="#joinRoom"
+                                    maxWidth="Infinity"
+                                    HBox.hgrow="ALWAYS"
+                                    styleClass="primary-green-btn"
+                                    prefHeight="42"/>
+
+                            <Button text="Leave Current Room"
+                                    onAction="#leaveRoom"
+                                    maxWidth="Infinity"
+                                    HBox.hgrow="ALWAYS"
+                                    styleClass="secondary-flat-btn"
+                                    prefHeight="42"/>
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="16" prefWidth="360" minWidth="320">
+
+                        <VBox spacing="12" styleClass="panel" prefHeight="220">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+
+                            <Label text="Room Members" styleClass="section-title"/>
+
+                            <ListView fx:id="memberList"
+                                      VBox.vgrow="ALWAYS"
+                                      styleClass="list-view"/>
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="panel" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+
+                            <Label text="Room Tactical Chat" styleClass="section-title"/>
+
+                            <ListView fx:id="roomChatList"
+                                      VBox.vgrow="ALWAYS"
+                                      styleClass="chat-list-view"/>
+
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <TextField fx:id="roomMessageField"
+                                           promptText="Ketik chat room..."
+                                           HBox.hgrow="ALWAYS"
+                                           styleClass="input"
+                                           prefHeight="40"
+                                           onAction="#sendRoomMessage"/>
+
+                                <Button text="SEND"
+                                        onAction="#sendRoomMessage"
+                                        styleClass="primary-green-btn"
+                                        prefHeight="40"
+                                        prefWidth="80"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
 </BorderPane>
