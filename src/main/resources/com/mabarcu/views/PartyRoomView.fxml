@@ -16,15 +16,13 @@
             prefWidth="1200"
             prefHeight="760"
             styleClass="root-bg">
-
- <!-- SIDEBAR NAVIGATION (MODERNIZED & CONSISTENT) -->
+ 
  <left>
   <VBox spacing="0" prefWidth="250" styleClass="sidebar" BorderPane.alignment="CENTER">
    <padding>
     <Insets top="32" right="16" bottom="24" left="16"/>
    </padding>
 
-   <!-- Brand Header Group -->
    <VBox spacing="2" styleClass="sidebar-divider">
     <padding>
      <Insets bottom="20"/>
@@ -35,8 +33,7 @@
     </HBox>
     <Label text="Gaming Hub &amp; Network" styleClass="muted" style="-fx-font-size: 11px; -fx-opacity: 0.5;"/>
    </VBox>
-
-   <!-- User Mini Profile Widget -->
+   
    <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: #14241c; -fx-background-radius: 10; -fx-padding: 12 14;">
     <VBox.margin>
      <Insets top="16" bottom="24"/>
@@ -50,8 +47,7 @@
      <Label text="Verified Player" style="-fx-text-fill: #ffffff; -fx-font-size: 13px; -fx-font-weight: bold;"/>
     </VBox>
    </HBox>
-
-   <!-- Navigation Links Container -->
+   
    <VBox spacing="6" VBox.vgrow="ALWAYS">
     <Button text="Dashboard" onAction="#goDashboard" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
      <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
@@ -72,26 +68,22 @@
      <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
     </Button>
    </VBox>
-
-   <!-- Danger/Logout Area -->
+   
    <Button text="Logout" onAction="#logout" maxWidth="Infinity" alignment="CENTER" styleClass="danger-btn" style="-fx-background-radius: 8;">
     <padding><Insets top="12" bottom="12"/></padding>
    </Button>
   </VBox>
  </left>
-
- <!-- MAIN CONTENT AREA -->
+ 
  <center>
   <StackPane>
-   <!-- Decorative Background Element -->
    <Circle radius="300" fill="#14241c" opacity="0.15" StackPane.alignment="BOTTOM_RIGHT" translateX="100" translateY="100" mouseTransparent="true"/>
 
    <VBox spacing="24" styleClass="page">
     <padding>
      <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
-
-    <!-- Page Header Area -->
+    
     <HBox spacing="12" alignment="CENTER_LEFT">
      <VBox spacing="4">
       <Label text="Party Room Hub" styleClass="page-title"/>
@@ -101,11 +93,9 @@
      <!-- Styled Refresh Button -->
      <Button text="🔄 Refresh" onAction="#refreshRooms" styleClass="secondary-flat-btn" prefHeight="38" prefWidth="110"/>
     </HBox>
-
-    <!-- Grid Form & Interaction Areas -->
+    
     <HBox spacing="20" VBox.vgrow="ALWAYS">
-
-     <!-- COLUMN 1: CREATE ROOM FORM -->
+     
      <VBox spacing="14" prefWidth="320" minWidth="300" styleClass="panel">
       <padding>
        <Insets top="20" right="20" bottom="20" left="20"/>
@@ -144,15 +134,13 @@
       </ScrollPane>
 
       <Button text="Create Room" onAction="#createRoom" maxWidth="Infinity" styleClass="primary-green-btn" prefHeight="40"/>
-
-      <!-- Custom Mini Terminal-style Info Box -->
+      
       <VBox spacing="6" style="-fx-background-color: #111f17; -fx-background-radius: 8; -fx-padding: 10;">
        <Label text="Console Info" styleClass="stat-label-alt" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
        <Label fx:id="infoLabel" text="Pilih atau buat room baru untuk memulai sesi." wrapText="true" styleClass="muted" style="-fx-font-size: 11px;"/>
       </VBox>
      </VBox>
-
-     <!-- COLUMN 2: AVAILABLE ROOMS LIST -->
+     
      <VBox spacing="14" prefWidth="420" styleClass="panel" HBox.hgrow="ALWAYS">
       <padding>
        <Insets top="20" right="20" bottom="20" left="20"/>
@@ -166,11 +154,9 @@
        <Button text="Leave Current Room" onAction="#leaveRoom" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="secondary-flat-btn" prefHeight="42"/>
       </HBox>
      </VBox>
-
-     <!-- COLUMN 3: ROOM INNER WORKINGS (MEMBERS & CHAT) -->
+     
      <VBox spacing="16" prefWidth="360" minWidth="320">
-
-      <!-- Top Box: Room Members -->
+      
       <VBox spacing="12" styleClass="panel" prefHeight="220">
        <padding>
         <Insets top="16" right="16" bottom="16" left="16"/>
@@ -179,7 +165,6 @@
        <ListView fx:id="memberList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
       </VBox>
 
-      <!-- Bottom Box: In-Room Chat Dedicated Platform -->
       <VBox spacing="12" styleClass="panel" VBox.vgrow="ALWAYS">
        <padding>
         <Insets top="16" right="16" bottom="16" left="16"/>
