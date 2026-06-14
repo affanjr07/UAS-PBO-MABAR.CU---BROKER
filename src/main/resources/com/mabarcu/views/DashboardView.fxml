@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  MABAR.CU - Premium Matte Dark Green Dashboard Layout
-  Optimized Sidebar UI with strict compliance to controller integration.
--->
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -17,92 +12,36 @@
             prefHeight="760"
             styleClass="root-bg">
 
-    <!-- SIDEBAR NAVIGATION (MODERNIZED) -->
     <left>
-        <VBox spacing="0" prefWidth="250" styleClass="sidebar">
-            <padding>
-                <Insets top="32" right="16" bottom="24" left="16"/>
-            </padding>
-
-            <!-- Brand Header Group -->
-            <VBox spacing="2" styleClass="sidebar-divider">
-                <padding>
-                    <Insets bottom="20"/>
-                </padding>
-                <HBox alignment="CENTER_LEFT" spacing="10">
-                    <!-- Clean Minimalist Geometric Logo -->
-                    <StackPane style="-fx-background-color: #52b788; -fx-background-radius: 6;" prefWidth="12" prefHeight="12"/>
-                    <Label text="MABAR.CU" styleClass="logo" style="-fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #ffffff;"/>
-                </HBox>
-                <Label text="Gaming Hub &amp; Network" styleClass="muted" style="-fx-font-size: 11px; -fx-opacity: 0.5;"/>
-            </VBox>
-
-            <!-- User Mini Profile Widget (Adds Premium Value) -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: #14241c; -fx-background-radius: 10; -fx-padding: 12 14;">
-                <VBox.margin>
-                    <Insets top="16" bottom="24"/>
-                </VBox.margin>
-                <!-- Avatar Placeholder with Matte Green Status -->
-                <StackPane alignment="BOTTOM_RIGHT">
-                    <Circle radius="16" fill="#1b4332"/>
-                    <Circle radius="4" fill="#52b788" stroke="#14241c" strokeWidth="1.5"/>
-                </StackPane>
-                <VBox spacing="1">
-                    <Label text="Active Session" styleClass="muted" style="-fx-font-size: 10px; -fx-text-transform: uppercase;"/>
-                    <Label text="Verified Player" style="-fx-text-fill: #ffffff; -fx-font-size: 13px; -fx-font-weight: bold;"/>
-                </VBox>
-            </HBox>
-
-            <!-- Navigation Links Container (Using consistent left alignment and spacing) -->
-            <VBox spacing="6" VBox.vgrow="ALWAYS">
-                <Button text="Dashboard" onAction="#goDashboard" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn-active">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-                <Button text="Matchmaking" onAction="#goMatchmaking" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-                <Button text="Party Room" onAction="#goParty" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-                <Button text="Friendlist" onAction="#goFriends" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-                <Button text="Chat" onAction="#goChat" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-                <Button text="Profile" onAction="#goProfile" maxWidth="Infinity" alignment="BASELINE_LEFT" styleClass="nav-btn">
-                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
-                </Button>
-            </VBox>
-
-            <!-- Danger/Logout Area -->
-            <Button text="Logout" onAction="#logout" maxWidth="Infinity" alignment="CENTER" styleClass="danger-btn" style="-fx-background-radius: 8;">
-                <padding><Insets top="12" bottom="12"/></padding>
-            </Button>
-        </VBox>
+        <fx:include source="Sidebar.fxml"/>
     </left>
 
-    <!-- MAIN CONTENT AREA (Kept Intact & Verified) -->
     <center>
         <StackPane>
-            <!-- Decorative Background Element (Smooth Matte Circle) -->
-            <Circle radius="300" fill="#14241c" opacity="0.2" StackPane.alignment="BOTTOM_RIGHT" translateX="100" translateY="100" mouseTransparent="true"/>
+            <Circle radius="300"
+                    fill="#14241c"
+                    opacity="0.2"
+                    StackPane.alignment="BOTTOM_RIGHT"
+                    translateX="100"
+                    translateY="100"
+                    mouseTransparent="true"/>
 
             <VBox spacing="24" styleClass="page">
                 <padding>
                     <Insets top="30" right="30" bottom="30" left="30"/>
                 </padding>
 
-                <!-- Page Header Info -->
                 <VBox spacing="4">
-                    <Label fx:id="welcomeLabel" text="Halo, Player" styleClass="page-title"/>
-                    <Label text="Pantau player online, notifikasi, dan aktivitas akun kamu secara real-time." styleClass="muted"/>
+                    <Label fx:id="welcomeLabel"
+                           text="Halo, Player"
+                           styleClass="page-title"/>
+
+                    <Label text="Pantau player online, notifikasi, dan aktivitas akun kamu secara real-time."
+                           styleClass="muted"/>
                 </VBox>
 
-                <!-- Grid/Dashboard Panels -->
                 <HBox spacing="20" VBox.vgrow="ALWAYS">
 
-                    <!-- Column 1: Online Status -->
                     <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
                         <VBox spacing="2">
                             <Label text="Online Players" styleClass="stat-label-alt"/>
@@ -111,42 +50,54 @@
                                 <Label text="active" styleClass="muted" style="-fx-font-size: 11px;"/>
                             </HBox>
                         </VBox>
-                        <ListView fx:id="onlineList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+
+                        <ListView fx:id="onlineList"
+                                  VBox.vgrow="ALWAYS"
+                                  styleClass="list-view"/>
                     </VBox>
 
-                    <!-- Column 2: Offline Status -->
                     <VBox spacing="14" styleClass="panel" HBox.hgrow="ALWAYS">
                         <VBox spacing="2">
                             <Label text="Offline Players" styleClass="stat-label"/>
                             <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="offlineCountLabel" text="0" styleClass="stat-value" style="-fx-text-fill: #52796f;"/>
+                                <Label fx:id="offlineCountLabel"
+                                       text="0"
+                                       styleClass="stat-value"
+                                       style="-fx-text-fill: #52796f;"/>
                                 <Label text="inactive" styleClass="muted" style="-fx-font-size: 11px;"/>
                             </HBox>
                         </VBox>
-                        <ListView fx:id="offlineList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+
+                        <ListView fx:id="offlineList"
+                                  VBox.vgrow="ALWAYS"
+                                  styleClass="list-view"/>
                     </VBox>
 
-                    <!-- Column 3: Notifications & Logs Area -->
                     <VBox spacing="16" HBox.hgrow="ALWAYS">
 
-                        <!-- Top Half: Notifications Box -->
                         <VBox spacing="10" styleClass="panel" VBox.vgrow="ALWAYS">
                             <Label text="Notifications" styleClass="section-title"/>
-                            <ListView fx:id="notificationList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+                            <ListView fx:id="notificationList"
+                                      VBox.vgrow="ALWAYS"
+                                      styleClass="list-view"/>
                         </VBox>
 
-                        <!-- Bottom Half: Activities Box -->
                         <VBox spacing="10" styleClass="panel" VBox.vgrow="ALWAYS">
                             <Label text="Activities Logs" styleClass="section-title"/>
-                            <ListView fx:id="activityList" VBox.vgrow="ALWAYS" styleClass="list-view"/>
+                            <ListView fx:id="activityList"
+                                      VBox.vgrow="ALWAYS"
+                                      styleClass="list-view"/>
                         </VBox>
                     </VBox>
 
                 </HBox>
 
-                <!-- Footer Action Bar -->
                 <HBox alignment="CENTER_RIGHT" styleClass="action-footer">
-                    <Button text="Refresh Dashboard" onAction="#refresh" prefHeight="38" prefWidth="180" styleClass="primary-green-btn"/>
+                    <Button text="Refresh Dashboard"
+                            onAction="#refresh"
+                            prefHeight="38"
+                            prefWidth="180"
+                            styleClass="primary-green-btn"/>
                 </HBox>
             </VBox>
         </StackPane>
