@@ -24,8 +24,15 @@ public class LoginController {
             return;
         }
 
-        AppData.login(u, passwordField.getText());
-        MainApp.setRoot("DashboardView");
+        try {
+            AppData.login(u, passwordField.getText());
+            MainApp.setRoot("DashboardView");
+        } catch (Exception e) {
+            showFeedback(
+                    e.getMessage() != null ? e.getMessage() : "Login gagal. Periksa username/password.",
+                    true
+            );
+        }
     }
 
     @FXML
@@ -38,8 +45,15 @@ public class LoginController {
             return;
         }
 
-        AppData.register(u, p);
-        showFeedback("Akun berhasil dibuat. Silakan login.", false);
+        try {
+            AppData.register(u, p);
+            showFeedback("Akun berhasil dibuat. Silakan login.", false);
+        } catch (Exception e) {
+            showFeedback(
+                    e.getMessage() != null ? e.getMessage() : "Registrasi gagal.",
+                    true
+            );
+        }
     }
 
     @FXML
