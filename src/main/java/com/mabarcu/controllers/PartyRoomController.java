@@ -1,6 +1,6 @@
 package com.mabarcu.controllers;
 
-import com.mabarcu.MainApp;
+
 import com.mabarcu.models.PartyRoom;
 import com.mabarcu.services.AppData;
 import com.mabarcu.services.Database;
@@ -330,44 +330,4 @@ public class PartyRoomController {
             infoLabel.setText(text);
         }
     }
-
-    @FXML
-    public void goDashboard() {
-        MainApp.setRoot("DashboardView");
-    }
-
-    @FXML
-    public void goMatchmaking() {
-        MainApp.setRoot("MatchmakingView");
-    }
-
-    @FXML
-    public void goParty() {
-        MainApp.setRoot("PartyRoomView");
-    }
-
-    @FXML
-    public void goFriends() {
-        MainApp.setRoot("FriendListView");
-    }
-
-    @FXML
-    public void goChat() {
-        MainApp.setRoot("ChatView");
-    }
-
-    @FXML
-    public void goProfile() {
-        MainApp.setRoot("ProfileView");
-    }
-
-    @FXML
-    public void logout() {
-        if (AppData.currentUser != null) {
-            Database.setOffline(AppData.currentUser.getId());
-        }
-
-        AppData.currentUser = null;
-        MainApp.setRoot("LoginView");
-    }
-}
+}

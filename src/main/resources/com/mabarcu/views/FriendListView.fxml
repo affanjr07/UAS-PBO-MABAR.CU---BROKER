@@ -12,21 +12,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.mabarcu.controllers.FriendListController" styleClass="root-bg" prefWidth="1000" prefHeight="650">
  <!-- SIDEBAR KIRI -->
  <left>
-  <VBox spacing="14" prefWidth="240" styleClass="sidebar" BorderPane.alignment="CENTER">
-   <Label text="MABAR.CU" styleClass="logo" />
-   <Separator styleClass="sidebar-divider"/>
-
-   <VBox spacing="8" VBox.vgrow="ALWAYS">
-    <Button text="Dashboard" onAction="#goDashboard" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-    <Button text="Matchmaking" onAction="#goMatchmaking" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-    <Button text="Profile" onAction="#goProfile" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-    <Button text="Chat" onAction="#goChat" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-    <Button text="Party Room" onAction="#goParty" styleClass="nav-btn" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-    <Button text="Friendlist" onAction="#goFriends" styleClass="nav-btn-active" maxWidth="Infinity" alignment="BASELINE_LEFT" />
-   </VBox>
-
-   <Button text="Logout" onAction="#logout" styleClass="danger-btn" maxWidth="Infinity" />
-  </VBox>
+  <fx:include source="Sidebar.fxml"/>
  </left>
 
  <!-- KONTEN UTAMA -->

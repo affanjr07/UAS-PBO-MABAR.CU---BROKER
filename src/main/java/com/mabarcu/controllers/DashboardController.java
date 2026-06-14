@@ -117,43 +117,4 @@ public class DashboardController {
     private String safe(String value) {
         return value == null || value.isBlank() ? "-" : value;
     }
-
-    @FXML
-    public void goDashboard() {
-        MainApp.setRoot("DashboardView");
-    }
-
-    @FXML
-    public void goMatchmaking() {
-        MainApp.setRoot("MatchmakingView");
-    }
-
-    @FXML
-    public void goFriends() {
-        MainApp.setRoot("FriendListView");
-    }
-
-    @FXML
-    public void goChat() {
-        MainApp.setRoot("ChatView");
-    }
-
-    @FXML
-    public void goProfile() {
-        MainApp.setRoot("ProfileView");
-    }
-
-    @FXML
-    public void logout() {
-        if (AppData.currentUser != null) {
-            Database.setOffline(AppData.currentUser.getId());
-        }
-
-        AppData.currentUser = null;
-        MainApp.setRoot("LoginView");
-    }
-    @FXML
-    public void goParty() {
-        MainApp.setRoot("PartyRoomView");
-    }
-}
+}
