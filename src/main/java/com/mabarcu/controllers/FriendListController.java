@@ -45,10 +45,11 @@ public class FriendListController extends BaseNav {
         AppData.reloadAll();
 
         var results = AppData.players.filtered(player ->
-                player.getUsername().toLowerCase().contains(q)
-                        || player.getDisplayName().toLowerCase().contains(q)
-                        || player.getFavoriteGame().toLowerCase().contains(q)
-                        || player.getGameRank().toLowerCase().contains(q)
+                player.getId() != AppData.currentUser.getId()
+                        && (player.getUsername().toLowerCase().contains(q)
+                                || player.getDisplayName().toLowerCase().contains(q)
+                                || player.getFavoriteGame().toLowerCase().contains(q)
+                                || player.getGameRank().toLowerCase().contains(q))
         );
 
         playerResultList.setItems(results);
@@ -69,13 +70,17 @@ public class FriendListController extends BaseNav {
             return;
         }
 
-        Database.followUser(
-                AppData.currentUser.getId(),
-                selectedPlayer.getId()
-        );
+        try {
+            Database.followUser(
+                    AppData.currentUser.getId(),
+                    selectedPlayer.getId()
+            );
 
-        refresh();
-        actionLabel.setText("Berhasil follow " + selectedPlayer.getDisplayName() + ".");
+            refresh();
+            actionLabel.setText("Berhasil follow " + selectedPlayer.getDisplayName() + ".");
+        } catch (Exception e) {
+            actionLabel.setText(e.getMessage() != null ? e.getMessage() : "Gagal follow player.");
+        }
     }
 
     @FXML

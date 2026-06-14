@@ -26,6 +26,7 @@ public class LoginController {
 
         try {
             AppData.login(u, passwordField.getText());
+<<<<<<< HEAD
             Alert success = new Alert(Alert.AlertType.INFORMATION, "Login berhasil! Selamat datang, " + AppData.currentUser.getDisplayName());
             success.showAndWait();
             MainApp.setRoot("DashboardView");
@@ -33,12 +34,40 @@ public class LoginController {
             Alert error = new Alert(Alert.AlertType.ERROR, e.getMessage());
             error.showAndWait();
             showFeedback(e.getMessage(), true);
+=======
+            MainApp.setRoot("DashboardView");
+        } catch (Exception e) {
+            showFeedback(
+                    e.getMessage() != null ? e.getMessage() : "Login gagal. Periksa username/password.",
+                    true
+            );
+>>>>>>> 4e3ab06ba4d8394a50b9997b9ef92224d56dd79c
         }
     }
 
     @FXML
     public void register() {
+<<<<<<< HEAD
         MainApp.setRoot("RegisterView");
+=======
+        String u = usernameField.getText().trim();
+        String p = passwordField.getText();
+
+        if (u.isEmpty() || p.isEmpty()) {
+            showFeedback("Username dan password wajib diisi.", true);
+            return;
+        }
+
+        try {
+            AppData.register(u, p);
+            showFeedback("Akun berhasil dibuat. Silakan login.", false);
+        } catch (Exception e) {
+            showFeedback(
+                    e.getMessage() != null ? e.getMessage() : "Registrasi gagal.",
+                    true
+            );
+        }
+>>>>>>> 4e3ab06ba4d8394a50b9997b9ef92224d56dd79c
     }
 
     @FXML
